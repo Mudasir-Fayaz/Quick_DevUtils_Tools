@@ -10,7 +10,7 @@ import StoreProvider from "../components/StoreProvider";
  import MainContainer from "@/components/layout/main-container";
  import ComingSoonBanner from "@/components/layout/coming-soon-banner";
  import SupportButton from "@/components/layout/support-button";
-import { SideBar, SearchModal } from "@/components/layout/nossr";
+import { SideBar, SearchModal, GAScript } from "@/components/layout/nossr";
 
 
  
@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   keywords: "developer tools, QuickDevUtils, code generators, online converters, developer utilities, web development tools, coding tools, productivity tools, JSON formatter, CSS generator, JavaScript utilities, regex tester, online dev tools"
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,6 +47,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <GAScript />
 <StoreProvider>
 
         <NextUIProvider>
