@@ -20,3 +20,8 @@ import dynamic from 'next/dynamic'
   () => import('../pages/home-page'),
   {ssr:false}
  )
+
+ export const GAScript = dynamic(
+  () => import('../scripts/google-analytics'),
+  {ssr:false}
+ )

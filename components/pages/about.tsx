@@ -138,9 +138,9 @@ export default function AboutPage() {
             <CardContent>
               <ul className="space-y-4">
                 <li className="flex items-start">
-                  <span className="font-semibold mr-2">2024:</span>
+                  <span className="font-semibold mr-2">22 Nov 2024:</span>
                  <p className="text-gray-600 dark:text-gray-200">
-  The first release of Tools App features a diverse range of utilities, including text tools, string tools, JSON tools, math tools, ASCII tools, HTML tools, CSS tools, JavaScript tools, color tools, and clock tools. Designed to simplify tasks and enhance productivity, this is just the beginning.
+  The first release of Quick DevUtils features a diverse range of utilities, including text tools, string tools, JSON tools, math tools, ASCII tools, HTML tools, CSS tools, JavaScript tools, color tools, and clock tools. Designed to simplify tasks and enhance productivity, this is just the beginning.
 </p>
 
                 </li>
