@@ -1,9 +1,9 @@
 import PageRender from "@/components/layout/page-data";
-import {AboutPage, Contact, PrivacyPolicy, TermsConditions }from "@/components/pages"
+import {AboutPage, Contact, PrivacyPolicy, RefundPolicy, TermsConditions }from "@/components/pages"
 import { notFound } from "next/navigation";
 
 
-type PageKeys = 'about-us' | 'privacy-policy' | 'terms-conditions' | 'contact-us';
+type PageKeys = 'about-us' | 'privacy-policy' | 'terms-conditions' | 'contact-us' | 'refund-cancellations';
 
 // Define a type for the values (React components)
 type PageValues = JSX.Element;
@@ -14,6 +14,7 @@ const pageData: Record<PageKeys, PageValues> = {
   'privacy-policy': <PrivacyPolicy />,
   'terms-conditions': <TermsConditions />,
   'contact-us': <Contact />,
+  'refund-cancellations': <RefundPolicy />,
 };
 
 
