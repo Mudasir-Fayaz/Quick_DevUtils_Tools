@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 
 const nextConfig = {
   /* config options here */
