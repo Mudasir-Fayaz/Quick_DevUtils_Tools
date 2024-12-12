@@ -2,7 +2,7 @@ import { toolsData } from '@/data';
 import { NextResponse } from 'next/server';
 
 // Replace this with your actual base URL
-const BASE_URL = "https://quick-devutils.vercel.app";
+const BASE_URL = "https://devutils.mudasir.in";
 
 // Static routes (add your static pages here)
 const staticRoutes = [
@@ -12,7 +12,7 @@ const staticRoutes = [
   '/privacy-policy',
   '/terms-conditions'
 ];
-
+export const runtime = "edge"
 // Example of dynamic routes
 async function getDynamicRoutes() {
     const slugs = toolsData.flatMap((category) => category.tools.map((tool) => tool.slug));
