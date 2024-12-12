@@ -7,7 +7,7 @@ type PageKeys = 'about-us' | 'privacy-policy' | 'terms-conditions' | 'contact-us
 
 // Define a type for the values (React components)
 type PageValues = JSX.Element;
-
+export const runtime = 'edge';
 // Combine the two types for the object
 const pageData: Record<PageKeys, PageValues> = {
   'about-us': <AboutPage />,

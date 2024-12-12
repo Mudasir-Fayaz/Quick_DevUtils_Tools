@@ -14,7 +14,7 @@ export async function generateStaticParams() {
     slug,
   }));
 }
-
+export const runtime = 'edge';
 
 export async function generateMetadata({ params }: MetaDataType) {
   const metaData = getToolMetadata((await params).slug);
