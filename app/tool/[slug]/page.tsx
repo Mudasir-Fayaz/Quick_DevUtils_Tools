@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { getToolMetadata, toolsData } from '@/data'
 import { RenderTool } from "@/components/layout/nossr";
-import getConfig from "next/config";
 type MetaDataType = {
   params: Promise<{
     slug: string;
@@ -15,8 +14,6 @@ export async function generateStaticParams() {
     slug,
   }));
 }
-const {serverRuntimeConfig} = getConfig();
-export const runtime = serverRuntimeConfig.runtime;
 
 
 export async function generateMetadata({ params }: MetaDataType) {

@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
+import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 
 const nextConfig = {
   /* config options here */
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -11,9 +13,6 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true, // Enable this to allow SVG images
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
-  serverRuntimeConfig: {
-    runtime: process.env.RUNTIME,
   },
 };
 

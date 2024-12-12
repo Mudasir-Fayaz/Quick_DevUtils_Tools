@@ -12,7 +12,7 @@ const staticRoutes = [
   '/privacy-policy',
   '/terms-conditions'
 ];
-export const runtime = "edge"
+export const runtime = 'edge'
 // Example of dynamic routes
 async function getDynamicRoutes() {
     const slugs = toolsData.flatMap((category) => category.tools.map((tool) => tool.slug));
