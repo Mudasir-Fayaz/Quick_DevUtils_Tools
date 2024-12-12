@@ -1,5 +1,6 @@
 import PageRender from "@/components/layout/page-data";
 import {AboutPage, Contact, PrivacyPolicy, RefundPolicy, TermsConditions }from "@/components/pages"
+import getConfig from "next/config";
 import { notFound } from "next/navigation";
 
 
@@ -7,7 +8,8 @@ type PageKeys = 'about-us' | 'privacy-policy' | 'terms-conditions' | 'contact-us
 
 // Define a type for the values (React components)
 type PageValues = JSX.Element;
-export const runtime = 'edge';
+const {serverRuntimeConfig} = getConfig();
+export const runtime = serverRuntimeConfig.runtime;
 // Combine the two types for the object
 const pageData: Record<PageKeys, PageValues> = {
   'about-us': <AboutPage />,

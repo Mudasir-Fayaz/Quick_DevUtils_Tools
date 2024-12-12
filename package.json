@@ -36,7 +36,7 @@
     "framer-motion": "^11.11.10",
     "jsonpath": "^1.1.1",
     "lucide-react": "^0.454.0",
-    "next": "^14.2.20",
+    "next": "^14.1.0",
     "next-themes": "^0.3.0",
     "re-resizable": "^6.10.1",
     "react": "^18",

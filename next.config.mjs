@@ -12,6 +12,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true, // Enable this to allow SVG images
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  serverRuntimeConfig: {
+    runtime: process.env.RUNTIME,
+  },
 };
 
 export default nextConfig;
