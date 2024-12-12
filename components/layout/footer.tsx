@@ -50,11 +50,11 @@ export default function Footer() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              <li><Link href="/about-us" className="hover:underline">About Us</Link></li>
-              <li><Link href="/refund-cancellations" className="hover:underline">Refund/Cancellations</Link></li>
-              <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
-              <li><Link href="/terms-conditions" className="hover:underline">Terms & Conditions</Link></li>
-              <li><Link href="/contact-us" className="hover:underline">Contact</Link></li>
+              <li><Link href="/pages/about-us" className="hover:underline">About Us</Link></li>
+              <li><Link href="/pages/refund-cancellations" className="hover:underline">Refund/Cancellations</Link></li>
+              <li><Link href="/pages/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
+              <li><Link href="/pages/terms-conditions" className="hover:underline">Terms & Conditions</Link></li>
+              <li><Link href="/pages/contact-us" className="hover:underline">Contact</Link></li>
             </motion.ul>
           </div>
           <div>
