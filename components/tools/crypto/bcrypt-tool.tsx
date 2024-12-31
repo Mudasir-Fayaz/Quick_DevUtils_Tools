@@ -34,7 +34,7 @@ const BcryptTool: React.FC = () => {
       const salt = await bcrypt.genSalt(saltRounds);
       const hash = await bcrypt.hash(inputText, salt);
       setHashedText(hash);
-    } catch (error) {
+    } catch  {
       toast({
         title: "Error",
         description: "Failed to generate hash",
@@ -57,7 +57,7 @@ const BcryptTool: React.FC = () => {
     try {
       const result = await bcrypt.compare(compareText, compareHash);
       setIsMatch(result);
-    } catch (error) {
+    } catch  {
       toast({
         title: "Error",
         description: "Invalid hash format",

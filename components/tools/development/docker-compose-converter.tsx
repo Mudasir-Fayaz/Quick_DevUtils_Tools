@@ -13,9 +13,9 @@ export default function DockerComposeConverter() {
     const parts = dockerRun.split(' ');
     let name = '';
     let image = '';
-    let ports: string[] = [];
-    let volumes: string[] = [];
-    let environment: string[] = [];
+    const ports: string[] = [];
+    const volumes: string[] = [];
+    const environment: string[] = [];
 
     for (let i = 0; i < parts.length; i++) {
       switch (parts[i]) {

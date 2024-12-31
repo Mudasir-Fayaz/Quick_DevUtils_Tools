@@ -16,7 +16,7 @@ const SafelinkDecoder: React.FC = () => {
       const encodedUrl = url.searchParams.get('url') || ''
       const decoded = decodeURIComponent(encodedUrl)
       setDecodedUrl(decoded)
-    } catch (error) {
+    } catch {
       setDecodedUrl('Invalid safelink')
     }
   }

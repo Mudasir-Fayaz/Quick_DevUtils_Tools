@@ -12,7 +12,7 @@ export default function RandomDigitPair() {
   const [result, setResult] = useState<string>('')
 
   const generateDigitPairs = () => {
-    let pairs = []
+    const pairs = []
     for (let i = 0; i < count; i++) {
       const pair = Math.floor(Math.random() * 100).toString().padStart(2, '0')
       pairs.push(pair)

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
-import { Copy, RefreshCw, ArrowUpDown } from 'lucide-react';
+import { Copy, ArrowUpDown } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -29,7 +29,6 @@ const IntegerBaseConverter: React.FC = () => {
   const [toBase, setToBase] = useState<number>(2);
   const [result, setResult] = useState('');
   const [error, setError] = useState('');
-  const [isConverting, setIsConverting] = useState(false);
 
   const validateInput = (value: string, base: number): boolean => {
     const regex = new RegExp(`^-?[0-9${base > 10 ? 'a-' + String.fromCharCode(86 + base) : ''}]+(\\.?[0-9${base > 10 ? 'a-' + String.fromCharCode(86 + base) : ''}]*)?$`, 'i');
@@ -37,7 +36,6 @@ const IntegerBaseConverter: React.FC = () => {
   };
 
   const convertBase = () => {
-    setIsConverting(true);
     setError('');
 
     try {
@@ -58,7 +56,7 @@ const IntegerBaseConverter: React.FC = () => {
       const [integerPart, fractionalPart] = absInput.split('.');
 
       // Convert integer part
-      let decimal = parseInt(integerPart, fromBase);
+      const decimal = parseInt(integerPart, fromBase);
       let result = decimal.toString(toBase);
 
       // Convert fractional part if exists
@@ -91,7 +89,6 @@ const IntegerBaseConverter: React.FC = () => {
       });
     }
 
-    setIsConverting(false);
   };
 
   useEffect(() => {

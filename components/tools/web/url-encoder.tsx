@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
-import { Copy, Upload } from 'lucide-react';
+import { Copy } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const UrlEncoder: React.FC = () => {

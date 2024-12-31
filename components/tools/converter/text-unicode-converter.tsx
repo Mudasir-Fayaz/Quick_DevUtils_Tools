@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
-import { Copy, Download, Info } from 'lucide-react';
+import { Copy, Download } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface UnicodeInfo {
   codePoint: string;
@@ -72,7 +72,7 @@ const TextToUnicodeConverter: React.FC = () => {
         const hex = code.replace(/^U\+/i, '');
         return String.fromCodePoint(parseInt(hex, 16));
       }).join('');
-    } catch (err) {
+    } catch  {
       throw new Error('Invalid Unicode format');
     }
   };

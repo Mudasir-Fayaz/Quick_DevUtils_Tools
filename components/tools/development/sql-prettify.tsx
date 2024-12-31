@@ -58,10 +58,7 @@ export default function SqlPretty() {
     navigator.clipboard.writeText(prettifiedSql)
   }
   
-  interface SelectProps {
-    onValueChange: (value: Dialect) => void; // Modify the prop to accept Dialect
-    // other props...
-  }
+ 
   return (
     <Card className="w-full">
       <CardContent className="p-6">

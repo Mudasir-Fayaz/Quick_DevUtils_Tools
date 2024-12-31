@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
@@ -41,7 +41,7 @@ const Bip39Generator: React.FC = () => {
       const newMnemonic = bip39.generateMnemonic(strength);
       setMnemonic(newMnemonic);
       setEntropy(bip39.mnemonicToEntropy(newMnemonic));
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to generate mnemonic",
@@ -58,7 +58,7 @@ const Bip39Generator: React.FC = () => {
         const newMnemonic = bip39.entropyToMnemonic(value);
         setMnemonic(newMnemonic);
       }
-    } catch (error) {
+    } catch  {
       // Invalid entropy - don't update mnemonic
     }
   };
@@ -69,7 +69,7 @@ const Bip39Generator: React.FC = () => {
       if (bip39.validateMnemonic(value)) {
         setEntropy(bip39.mnemonicToEntropy(value));
       }
-    } catch (error) {
+    } catch {
       // Invalid mnemonic - don't update entropy
     }
   };

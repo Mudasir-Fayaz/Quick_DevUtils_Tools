@@ -16,7 +16,7 @@ const JwtParser: React.FC = () => {
       const header = JSON.parse(atob(headerB64))
       const payload = JSON.parse(atob(payloadB64))
       setParsedJwt({ header, payload, signature: signatureB64 })
-    } catch (error) {
+    } catch{
       console.error('Invalid JWT')
       setParsedJwt(null)
     }

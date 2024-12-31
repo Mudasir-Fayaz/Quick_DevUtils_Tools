@@ -37,7 +37,7 @@ function expandRange(startIp: string, endIp: string): RangeResult | null {
 
   if (start > end) return null
 
-  const addressesInRange = end - start + 1
+  //const addressesInRange = end - start + 1
   const cidr = calculateCIDR(start, end)
 
   // Adjust start and end to fit CIDR block

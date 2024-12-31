@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Copy, Info } from 'lucide-react'
+import { Copy } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"

@@ -16,7 +16,7 @@ export default function RandomRegex() {
     try {
       const randexp = new RandExp(regex)
       setResult(randexp.gen())
-    } catch (error) {
+    } catch {
       setResult('Invalid regular expression')
     }
   }

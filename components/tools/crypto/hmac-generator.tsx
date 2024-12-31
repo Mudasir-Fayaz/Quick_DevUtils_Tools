@@ -89,7 +89,7 @@ const HmacGenerator: React.FC = () => {
       }
 
       setHmacResult(result);
-    } catch (error) {
+    } catch  {
       toast({
         title: "Error",
         description: "Failed to generate HMAC",

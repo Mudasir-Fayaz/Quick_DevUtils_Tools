@@ -3,7 +3,6 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -91,7 +90,7 @@ function RegexTester({ pattern }: { pattern: string }) {
     try {
       const regex = new RegExp(pattern)
       setResult(regex.test(e.target.value) ? "Match" : "No match")
-    } catch (error) {
+    } catch {
       setResult("Invalid regex")
     }
   }

@@ -22,7 +22,7 @@ const BasicAuthGenerator: React.FC = () => {
       const [decodedUsername, decodedPassword] = decoded.split(':')
       setUsername(decodedUsername)
       setPassword(decodedPassword)
-    } catch (error) {
+    } catch {
       console.error('Invalid Basic Auth string')
     }
   }

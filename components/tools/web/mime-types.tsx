@@ -29,7 +29,7 @@ const MimeTypes: React.FC = () => {
   }
 
   const getExtension = () => {
-    const entry = Object.entries(mimeTypes).find(([_, value]) => value.toLowerCase() === input.toLowerCase())
+    const entry = Object.entries(mimeTypes).find(([, value]) => value.toLowerCase() === input.toLowerCase())
     setResult(entry ? entry[0] : 'Unknown extension')
   }
 

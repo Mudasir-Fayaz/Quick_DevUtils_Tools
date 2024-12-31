@@ -28,19 +28,19 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/ss-1.jpg",
+      "src": "/screenshots/du-1.jpg",
       "type": "image/png",
       "sizes": "1080x1920",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshots/ss-2.jpg",
+      "src": "/screenshots/du-2.jpg",
       "type": "image/png",
       "sizes": "1080x1920",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshots/ss-3.jpg",
+      "src": "/screenshots/du-3.jpg",
       "type": "image/png",
       "sizes": "1080x1920",
       "form_factor": "wide"

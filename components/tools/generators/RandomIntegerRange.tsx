@@ -16,7 +16,7 @@ export default function RandomIntegerRange() {
   const [result, setResult] = useState<number[]>([])
 
   const generateRange = () => {
-    let range = []
+    const range = []
     for (let i = 0; i < count; i++) {
       range.push(Math.floor(Math.random() * (end - start + 1)) + start)
     }

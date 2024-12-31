@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
 import { Copy, RefreshCw, ArrowDownUp } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CryptoJS from 'crypto-js';
 
 type Algorithm = 'AES' | 'TripleDES' | 'Rabbit' | 'RC4';
@@ -70,7 +69,7 @@ const TextCrypto: React.FC = () => {
           }
           processed = decrypted.toString(CryptoJS.enc.Utf8);
           if (!processed) throw new Error('Invalid decryption');
-        } catch (error) {
+        } catch{
           throw new Error('Failed to decrypt. Check your key and encrypted text.');
         }
       }

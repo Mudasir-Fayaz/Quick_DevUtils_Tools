@@ -34,7 +34,7 @@ const RsaGenerator: React.FC = () => {
 
       setPublicKey(publicKeyPem);
       setPrivateKey(privateKeyPem);
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to generate key pair",

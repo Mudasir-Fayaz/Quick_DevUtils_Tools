@@ -29,8 +29,8 @@ function calculateSubnet(input: string): SubnetInfo | null {
   const ipRegex = /^(\d{1,3}\.){3}\d{1,3}(\/\d{1,2})?$/
   if (!ipRegex.test(input)) return null
 
-  let [ip, cidr] = input.split('/')
-  let mask = cidr ? parseInt(cidr) : 24 // Default to /24 if no CIDR is provided
+  const [ip, cidr] = input.split('/')
+  const mask = cidr ? parseInt(cidr) : 24 // Default to /24 if no CIDR is provided
 
   if (mask < 0 || mask > 32) return null
 

@@ -56,6 +56,7 @@ const TextToBinaryConverter: React.FC = () => {
       setError('');
     } catch (err) {
       setError('Failed to convert text to binary');
+      console.log(err)
       toast({
         title: "Error",
         description: "Failed to convert text to binary",

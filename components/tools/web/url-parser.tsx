@@ -67,7 +67,7 @@ export default function UrlParser() {
   const parseURL = useCallback(() => {
     try {
       const parsedUrl = new URL(url)
-      const params = new URLSearchParams(parsedUrl.search)
+     // const params = new URLSearchParams(parsedUrl.search)
       
       setParsedURL({
         protocol: parsedUrl.protocol,

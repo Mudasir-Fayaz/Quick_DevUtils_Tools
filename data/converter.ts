@@ -113,36 +113,36 @@ const converterTools: ToolCategory = {
         }
       ]
     },
-    {
-      name: "Base64 File Converter",
-      icon: 'Replace',
-      description: "Convert files to and from Base64 format. The tool makes it easy to encode files such as images, documents, or any binary files to Base64 format for easier sharing and storage. It also decodes Base64 encoded files back into their original form. This is a must-have for developers and those dealing with file transmission over networks.",
-      keywords: "base64, file conversion, encode file, decode file",
-      slug: "/tool/base64-file",
-      component: Base64FileConverter,
-      faqs: [
-        {
-          question: "What types of files can I convert to Base64?",
-          answer: "You can convert any file type to Base64, such as images, PDFs, or any binary file formats."
-        },
-        {
-          question: "How do I convert files to Base64?",
-          answer: "Simply upload the file and the tool will automatically convert it to Base64 format, which you can then copy or download."
-        },
-        {
-          question: "Can I decode Base64 encoded files back to their original format?",
-          answer: "Yes, you can decode Base64 encoded files back to their original format using the same tool."
-        },
-        {
-          question: "Why is Base64 used for file conversion?",
-          answer: "Base64 is used for file conversion because it ensures that binary files can be transmitted over text-based protocols, such as email or HTTP requests."
-        },
-        {
-          question: "Is there a file size limit for conversion?",
-          answer: "While there is no strict limit, very large files may take longer to process depending on your system and internet speed."
-        }
-      ]
-    },
+    // {
+    //   name: "Base64 File Converter",
+    //   icon: 'Replace',
+    //   description: "Convert files to and from Base64 format. The tool makes it easy to encode files such as images, documents, or any binary files to Base64 format for easier sharing and storage. It also decodes Base64 encoded files back into their original form. This is a must-have for developers and those dealing with file transmission over networks.",
+    //   keywords: "base64, file conversion, encode file, decode file",
+    //   slug: "/tool/base64-file",
+    //   component: Base64FileConverter,
+    //   faqs: [
+    //     {
+    //       question: "What types of files can I convert to Base64?",
+    //       answer: "You can convert any file type to Base64, such as images, PDFs, or any binary file formats."
+    //     },
+    //     {
+    //       question: "How do I convert files to Base64?",
+    //       answer: "Simply upload the file and the tool will automatically convert it to Base64 format, which you can then copy or download."
+    //     },
+    //     {
+    //       question: "Can I decode Base64 encoded files back to their original format?",
+    //       answer: "Yes, you can decode Base64 encoded files back to their original format using the same tool."
+    //     },
+    //     {
+    //       question: "Why is Base64 used for file conversion?",
+    //       answer: "Base64 is used for file conversion because it ensures that binary files can be transmitted over text-based protocols, such as email or HTTP requests."
+    //     },
+    //     {
+    //       question: "Is there a file size limit for conversion?",
+    //       answer: "While there is no strict limit, very large files may take longer to process depending on your system and internet speed."
+    //     }
+    //   ]
+    // },
     {
       name: "Color Converter",
       icon: 'Palette',

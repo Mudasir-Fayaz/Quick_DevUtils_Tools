@@ -1,13 +1,12 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
-import { Copy, Palette, Eye } from 'lucide-react';
+import { Copy,  } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface ColorFormats {
   hex: string;
@@ -39,7 +38,8 @@ const ColorConverter: React.FC = () => {
     g /= 255;
     b /= 255;
     const max = Math.max(r, g, b), min = Math.min(r, g, b);
-    let h = 0, s, l = (max + min) / 2;
+    let h = 0, s;
+    const l = (max + min) / 2;
 
     if (max === min) {
       h = s = 0;

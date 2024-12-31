@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <>
     {filteredCategories.map((category:ToolCategory, categoryIndex: number) => {
-      // const IconComponent = toolIcons[category.icon];
+      const IconComponent = toolIcons[category.icon];
       return (
       <motion.section
         key={category.name}
@@ -59,7 +59,7 @@ export default function HomePage() {
         className="mb-12"
       >
         <div className="flex items-center mb-6">
-          {/* <IconComponent className="w-8 h-8 mr-3 text-primary" />  */}
+          <IconComponent className="w-8 h-8 mr-3 text-primary" /> 
           <h2 className="text-xl font-bold">{category.name}</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
