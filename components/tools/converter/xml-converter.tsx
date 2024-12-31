@@ -23,6 +23,7 @@ interface XMLOptions {
   formatXml: boolean;
 }
 
+
 const XmlConverter: React.FC = () => {
   const [input, setInput] = useState('');
   const [mode, setMode] = useState<ConversionMode>('xmlToJson');
@@ -40,7 +41,7 @@ const XmlConverter: React.FC = () => {
     ignoreAttributes: !options.preserveAttributes,
     ignoreNameSpace: options.ignoreNamespaces,
     format: options.formatXml,
-  });
+  } as any);
 
   const builder = new XMLBuilder({
     ignoreAttributes: !options.preserveAttributes,
