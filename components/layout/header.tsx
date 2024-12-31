@@ -9,6 +9,10 @@ import { useTheme } from 'next-themes'
 import { useRef } from 'react'
 import { setSearchTerm } from '@/lib/features/searchSlice';
 import Link from 'next/link'
+import { SupportMeButton } from './support-me'
+
+
+
 
 const Header = () => {
     const {theme, setTheme} = useTheme();
@@ -42,8 +46,9 @@ return (<header className="bg-background border-b">
       </Button>
       <Link href='/'>
       
-      <div className="font-bold text-xl">Quick DevUtils</div>
+      <div className="font-bold text-lg">Quick DevUtils</div>
       </Link>
+<SupportMeButton />
     </div>
    
     <Button

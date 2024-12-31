@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "Slug Generator",
-  description: "Generate clean, URL-friendly slugs from any text for better web links.",
+  description: "The Slug Generator creates clean, URL-friendly slugs from any text, making it easier to create SEO-friendly and readable web links.",
+  keywords: "slug generator, url slug tool, url-friendly text, text to slug, slugify tool, create slugs, seo-friendly url, text to url, slug converter, web-friendly text",
 };
 
 const ToolDetail = () => {

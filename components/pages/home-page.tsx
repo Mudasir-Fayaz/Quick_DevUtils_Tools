@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <>
     {filteredCategories.map((category:ToolCategory, categoryIndex: number) => {
-       const IconComponent = toolIcons[category.icon];
+      // const IconComponent = toolIcons[category.icon];
       return (
       <motion.section
         key={category.name}
@@ -59,12 +59,23 @@ export default function HomePage() {
         className="mb-12"
       >
         <div className="flex items-center mb-6">
-          <IconComponent className="w-8 h-8 mr-3 text-primary" /> 
-          <h2 className="text-3xl font-bold">{category.name}</h2>
+          {/* <IconComponent className="w-8 h-8 mr-3 text-primary" />  */}
+          <h2 className="text-xl font-bold">{category.name}</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {category.tools.map((tool, toolIndex) => {
-             const IconComponent = toolIcons[tool.icon];
+
+let text = tool.description;
+    
+// Find the position of the first period
+const firstPeriodIndex = text.indexOf('.');
+
+// If there's a period, trim the text up to the first period
+if (firstPeriodIndex !== -1) {
+  text = text.substring(0, firstPeriodIndex + 1); // Include the period
+}
+
+            // const IconComponent = toolIcons[tool.icon];
             return (
             <motion.div
               key={tool.name}
@@ -78,11 +89,11 @@ export default function HomePage() {
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between group-hover:text-primary transition-colors duration-300">
                     {tool.name}
-                    <IconComponent className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" /> 
+                    {/* <IconComponent className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />  */}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription>{tool.description}</CardDescription>
+                  <CardDescription>{text}</CardDescription>
                 </CardContent>
               </Card>
               </Link>

@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "URL Encoder/Decoder",
-  description: "Encode strings to URL-safe format or decode URL-encoded strings for seamless web interactions.",
+  description: "The URL Encoder/Decoder encodes strings to URL-safe format or decodes URL-encoded strings for seamless web interactions. This tool helps ensure that URLs are properly formatted and readable.",
+  keywords: "url encoder, url decoder, encode url, decode url, url-safe text, url formatting, text to url, url conversion, decode web links, encode text for url",
 };
 
 const ToolDetail = () => {

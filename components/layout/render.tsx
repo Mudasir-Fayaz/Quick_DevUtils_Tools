@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useAppDispatch } from '@/lib/hooks';
 import { setActiveTool } from '@/lib/features/activeToolSlice';
 import { toolsData } from '@/data';
+import AnimatedFAQs from '../AnimatedFAQS';
 
 
 interface IntroProps {
@@ -12,6 +13,14 @@ interface IntroProps {
 
 const Intro: React.FC<IntroProps> = ({ slug }) => {
     const dispatch = useAppDispatch();
+
+useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  },[])
+
   useEffect(() => {
     dispatch(setActiveTool('/tool/' + slug));
    
@@ -31,7 +40,8 @@ const tool = toolsData.find((toolCategory) =>
     <p className="text-gray-600 dark:text-gray-300">{tool?.description}</p>
     
     {tool?.component ? <tool.component /> : <p>No component available for this tool.</p>}
-  </div>
+    <AnimatedFAQs faqs={tool?.faqs}/>
+      </div>
   )
 }
 

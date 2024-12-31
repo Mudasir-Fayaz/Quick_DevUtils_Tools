@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "Factorial Calculator",
-  description: "Calculates the factorial of a number, useful for combinatorics and probability calculations.",
+  description: "Factorial Calculator calculates the factorial of a number, useful for combinatorics, probability calculations, and algebra. Factorials are commonly used in permutations, combinations, and other mathematical concepts that involve counting or arranging objects.",
+  keywords: "factorial calculator, factorial, combinatorics, math factorial, n factorial, factorial math, probability calculations",
 };
 
 const ToolDetail = () => {

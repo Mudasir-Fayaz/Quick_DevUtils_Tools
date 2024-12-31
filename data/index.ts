@@ -1,9 +1,15 @@
 import { ToolCategory } from "@/types";
 
 
-import {textTools, stringTools, jsonTools, mathTools, asciiTools, htmlTools, cssTools, javascriptTools, clockTools, colorTools} from "./tools";
+import {networkTools,converterTools,cryptoTools, textTools, stringTools, jsonTools, mathTools, asciiTools, htmlTools, cssTools, javascriptTools, clockTools, colorTools, webTools, devTools, cameraTools, generatorTools} from "./tools";
 
 export const toolsData: ToolCategory[] = [
+  cryptoTools,
+  converterTools,
+  webTools,
+  devTools,
+  cameraTools,
+  networkTools,
    textTools,
    stringTools,
 jsonTools,
@@ -13,7 +19,8 @@ jsonTools,
     cssTools,
     javascriptTools,
     colorTools,
-    clockTools
+    clockTools,
+    generatorTools,
         
 ]
 

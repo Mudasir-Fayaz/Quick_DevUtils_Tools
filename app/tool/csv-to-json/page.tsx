@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "CSV to JSON Converter",
-  description: "Transforms CSV files into JSON format for seamless use in APIs and applications.",
+  description: "CSV to JSON Converter transforms CSV data into JSON format, which is commonly used for APIs, web applications, and various programming tasks. This tool is great for integrating CSV-based datasets into systems that require JSON, streamlining the process of data conversion without manual formatting.",
+  keywords: "csv to json, convert csv to json, csv json converter, csv to json tool, convert csv, csv to json parser, csv data to json",
 };
 
 const ToolDetail = () => {

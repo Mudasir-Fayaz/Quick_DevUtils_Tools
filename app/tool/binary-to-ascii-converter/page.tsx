@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "Binary to ASCII Converter",
-  description: "Transforms binary code into readable ASCII text for decoding binary data efficiently.",
+  description: "The Binary to ASCII Converter decodes binary sequences into readable ASCII text. It simplifies the translation of binary data into human-understandable formats, useful for debugging or analysis. Supports batch conversions for efficient processing. Ideal for developers working with binary code. Designed for simplicity and speed.",
+  keywords: "binary to ASCII converter, convert binary to ASCII, binary code to text, binary decoder, ASCII from binary, binary to character conversion, decode binary text, binary to string, binary translation, ASCII tool",
 };
 
 const ToolDetail = () => {

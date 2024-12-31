@@ -66,7 +66,7 @@ const Logo = () => {
           <Github size={20} />
         </motion.a>
         <motion.a 
-          href="https://x.com/@coder_mudasir" 
+          href="https://x.com/@mudasirbuilds" 
           target="_blank" 
           rel="noopener noreferrer"
           whileHover={{ scale: 1.2 }}

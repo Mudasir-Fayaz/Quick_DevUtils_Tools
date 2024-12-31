@@ -32,7 +32,7 @@ export default function Footer() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-       Quick DevUtils is here to make your work easier and faster with helpful tools for professionals and hobbyists. Whether you&apos;re handling text, code, or data, we offer tools to simplify your tasks. From editing text and formatting JSON to doing math calculations, we've got you covered. Need help with HTML, CSS, or JavaScript? Or maybe a color picker or clock tool? Quick DevUtils has everything you need to work smarter, not harder.
+       Quick DevUtils is your ultimate one-stop platform, offering 150+ essential tools for developers, designers, and everyday users. Whether you're working with text, code, numbers, colors, or files, this app simplifies your workflow with a wide variety of powerful, easy-to-use utilities—all available directly in your browser.
            </motion.p>
           </div>
           <div>

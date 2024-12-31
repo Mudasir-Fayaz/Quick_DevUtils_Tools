@@ -31,7 +31,7 @@ export default function ComingSoonBanner() {
       <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between">
         <div className="flex items-center mb-4 sm:mb-0">
           <Sparkles className="w-6 h-6 mr-2 text-yellow-300" />
-          <h2 className="text-lg sm:text-xl font-bold">More Tools Coming Soon!</h2>
+          <h2 className="text-lg sm:text-xl font-bold">More Tools & Features</h2>
         </div>
         <AnimatePresence>
           {isExpanded && (
@@ -41,7 +41,7 @@ export default function ComingSoonBanner() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              We&#39;re working hard to bring you exciting new features. Stay tuned!
+              We&#39;re working hard to bring you exciting new tools & features.
             </motion.p>
           )}
         </AnimatePresence>

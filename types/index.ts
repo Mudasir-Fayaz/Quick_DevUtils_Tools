@@ -13,12 +13,17 @@ export interface Tool {
   keywords: string;
   slug: string;
   component: FC;
+  faqs: FAQ[];
 }
-
+type FAQ = {
+  question:string
+  answer:string
+}
 export interface ToolCategory {
   name: string;
   icon: string;
   tools: Tool[];
+ 
 }
 type IconKey = string;
 

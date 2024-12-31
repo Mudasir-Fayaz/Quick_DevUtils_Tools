@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "Remove Duplicate Lines",
-  description: "Detects and removes duplicate lines from a text input, ensuring unique content.",
+  description: "The Remove Duplicate Lines tool detects and removes duplicate lines from your text input, ensuring unique and clean content. This is useful for lists, code, or any text requiring deduplication.",
+  keywords: "remove duplicate lines, deduplicate text, text deduplication tool, clean duplicate lines, unique line generator",
 };
 
 const ToolDetail = () => {

@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "Text Diff Checker",
-  description: "Compares two text inputs and highlights differences for side-by-side analysis.",
+  description: "The Text Diff Checker compares two text inputs side by side, highlighting differences between them for easier analysis and comparison. It's great for comparing document revisions or tracking changes in code.",
+  keywords: "text diff checker, compare text, text comparison, text differences, diff tool, compare documents",
 };
 
 const ToolDetail = () => {

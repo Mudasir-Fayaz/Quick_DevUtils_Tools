@@ -1,0 +1,49 @@
+{
+  "name": "Quick DevUtils",
+  "short_name": "DevUtils",
+  "theme_color": "#50E3C2",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "id": "DevUtils",
+  "display": "standalone",
+  "description": "Quick DevUtils is your ultimate one-stop platform, offering 150+ essential tools for developers, designers, and everyday users. Whether you're working with text, code, numbers, colors, or files, this app simplifies your workflow with a wide variety of powerful, easy-to-use utilities—all available directly in your browser.",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icon-512-maskable.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "icon-512.png",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/ss-1.jpg",
+      "type": "image/png",
+      "sizes": "1080x1920",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/ss-2.jpg",
+      "type": "image/png",
+      "sizes": "1080x1920",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/ss-3.jpg",
+      "type": "image/png",
+      "sizes": "1080x1920",
+      "form_factor": "wide"
+    }
+  ]
+}

@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "Random Number Generator",
-  description: "Generates a random number within a specified range, useful for simulations and probability studies.",
+  description: "Random Number Generator generates a random number within a specified range, useful for simulations, probability studies, and random selection tasks. This tool is ideal for creating random values for lotteries, experiments, or games.",
+  keywords: "random number generator, rng, random number, number generator, randomizer, random range, random value",
 };
 
 const ToolDetail = () => {

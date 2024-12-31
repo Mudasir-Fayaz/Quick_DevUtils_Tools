@@ -3,7 +3,8 @@ import { RenderTool } from "@/components/layout/nossr";
 
 export const metadata = {
   title: "Word Counter",
-  description: "Counts words, characters, and spaces in your text to help you analyze content length.",
+  description: "The Word Counter counts the number of words, characters, and spaces in your text. It's a helpful tool for content creators, writers, and anyone looking to analyze the length of their text.",
+  keywords: "word counter, character counter, text analysis, word count tool, content length checker, character count tool",
 };
 
 const ToolDetail = () => {
