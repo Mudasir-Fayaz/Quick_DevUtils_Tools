@@ -4,12 +4,6 @@ import { ToolCategory } from "@/types";
 import {networkTools,converterTools,cryptoTools, textTools, stringTools, jsonTools, mathTools, asciiTools, htmlTools, cssTools, javascriptTools, clockTools, colorTools, webTools, devTools, cameraTools, generatorTools} from "./tools";
 
 export const toolsData: ToolCategory[] = [
-  cryptoTools,
-  converterTools,
-  webTools,
-  devTools,
-  cameraTools,
-  networkTools,
    textTools,
    stringTools,
 jsonTools,
@@ -20,6 +14,12 @@ jsonTools,
     javascriptTools,
     colorTools,
     clockTools,
+    cryptoTools,
+  converterTools,
+  webTools,
+  devTools,
+  cameraTools,
+  networkTools,
     generatorTools,
         
 ]
