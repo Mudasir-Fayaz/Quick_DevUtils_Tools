@@ -31,7 +31,8 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Quick DevUtils | All-in-One Developer Tools, Converters & Generators",
   description: "Quick DevUtils is your ultimate one-stop platform, offering 150+ essential tools for developers, designers, and everyday users. Whether you're working with text, code, numbers, colors, or files, this app simplifies your workflow with a wide variety of powerful, easy-to-use utilities—all available directly in your browser.",
-  keywords: "developer tools, QuickDevUtils, code generators, online converters, developer utilities, web development tools, coding tools, productivity tools, JSON formatter, CSS generator, JavaScript utilities, regex tester, online dev tools"
+  keywords: "developer tools, QuickDevUtils, code generators, online converters, developer utilities, web development tools, coding tools, productivity tools, JSON formatter, CSS generator, JavaScript utilities, regex tester, online dev tools",
+  manifest:'/web.manifest'
 };
 
 
