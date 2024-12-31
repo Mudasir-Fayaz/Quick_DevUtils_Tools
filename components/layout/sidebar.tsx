@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import { ScrollArea } from '../ui/scroll-area'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
-import { Sidebar,ChevronDown, ChevronRight, ArrowLeft  } from 'lucide-react'
+import { Sidebar,ChevronDown, ChevronRight, ArrowLeft, File  } from 'lucide-react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { toggleSidebar } from '@/lib/features/uiSlice';
 import { toolsData } from '@/data'
@@ -71,7 +71,7 @@ const SideBar = () => {
          <Logo />
           <DonateButton />
                 {toolsData.map((category: ToolCategory) => {
-                   const IconComponent = toolIcons[category.icon];
+                   const IconComponent = toolIcons[category.icon] || File;
                   return (
                   <div key={category.name} className="space-y-2">
                     <Button
@@ -99,7 +99,7 @@ const SideBar = () => {
                           className="space-y-1 overflow-hidden"
                         >
                           {category.tools.map((tool) => {
-                             const IconComponent = toolIcons[tool.icon];
+                             const IconComponent = toolIcons[tool.icon] || File;
                             return (
                              <Link href={tool.slug} passHref key={tool.slug}>
                   

@@ -13,6 +13,7 @@ import { toolsData } from '@/data';
 import { setActiveTool } from '@/lib/features/activeToolSlice';
 import Link from 'next/link';
 import { toolIcons } from '@/data/tool-icons';
+import { File } from 'lucide-react';
 export default function HomePage() {
  
   const dispatch = useAppDispatch();
@@ -49,7 +50,7 @@ export default function HomePage() {
   return (
     <>
     {filteredCategories.map((category:ToolCategory, categoryIndex: number) => {
-      const IconComponent = toolIcons[category.icon];
+      const IconComponent =  toolIcons[category.icon] || File;
       return (
       <motion.section
         key={category.name}
@@ -75,7 +76,7 @@ if (firstPeriodIndex !== -1) {
   text = text.substring(0, firstPeriodIndex + 1); // Include the period
 }
 
-            // const IconComponent = toolIcons[tool.icon];
+            const IconComponent = toolIcons[tool.icon] || File;
             return (
             <motion.div
               key={tool.name}
@@ -89,7 +90,7 @@ if (firstPeriodIndex !== -1) {
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between group-hover:text-primary transition-colors duration-300">
                     {tool.name}
-                    {/* <IconComponent className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />  */}
+                     <IconComponent className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />  
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
