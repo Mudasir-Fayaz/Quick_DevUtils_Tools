@@ -110,7 +110,7 @@ export default function HtmlEntityEd() {
   }
 
   return (
-    <div className="container mx-auto space-y-6">
+    <div className="container mx-auto p-2">
       
 
       <Tabs value={mode} onValueChange={(value) => setMode(value as 'encode' | 'decode')} className="w-full">
@@ -130,7 +130,7 @@ export default function HtmlEntityEd() {
           </CardHeader>
           <CardContent>
             <textarea
-              className="w-full h-64 p-2 border rounded resize-none font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-64 p-2 border rounded resize-none font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 sm:h-80 lg:h-96"
               value={input}
               onChange={handleInputChange}
               placeholder={`Enter text to ${mode} here...`}
@@ -154,7 +154,7 @@ export default function HtmlEntityEd() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ScrollArea className="h-64 w-full rounded border p-4">
+                  <ScrollArea className="h-64 w-full rounded border p-4 sm:h-80 lg:h-96">
                     <pre className="whitespace-pre-wrap font-mono text-sm">{output}</pre>
                   </ScrollArea>
                 </CardContent>

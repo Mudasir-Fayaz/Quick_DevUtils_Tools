@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { useAppDispatch } from '@/lib/hooks';
 import { setActiveTool } from '@/lib/features/activeToolSlice';
-import { toolsData } from '@/data';
+import { toolsData } from '@/tools';
 import AnimatedFAQs from '../AnimatedFAQS';
 
 

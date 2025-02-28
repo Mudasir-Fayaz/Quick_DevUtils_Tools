@@ -115,24 +115,25 @@ const YamlJsonConverter: React.FC = () => {
         
 
         <div className="space-y-6">
-          <div className="flex justify-between items-center">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <Tabs value={mode} onValueChange={(value) => setMode(value as 'yamlToJson' | 'jsonToYaml')}>
-              <TabsList>
-                <TabsTrigger value="yamlToJson">YAML → JSON</TabsTrigger>
-                <TabsTrigger value="jsonToYaml">JSON → YAML</TabsTrigger>
+              <TabsList className="flex space-x-2">
+              <TabsTrigger value="yamlToJson">YAML → JSON</TabsTrigger>
+              <TabsTrigger value="jsonToYaml">JSON → YAML</TabsTrigger>
               </TabsList>
             </Tabs>
 
             {mode === 'yamlToJson' && (
               <Button
-                variant="outline"
-                onClick={() => setIsPretty(!isPretty)}
-                size="sm"
+              variant="outline"
+              onClick={() => setIsPretty(!isPretty)}
+              size="sm"
+              className="mt-2 md:mt-0"
               >
-                {isPretty ? 'Compact' : 'Pretty'} JSON
+              {isPretty ? 'Compact' : 'Pretty'} JSON
               </Button>
             )}
-          </div>
+            </div>
 
           <div>
             <div className="flex justify-between items-center mb-2">

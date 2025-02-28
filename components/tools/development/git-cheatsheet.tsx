@@ -85,7 +85,7 @@ export default function GitCheatsheet() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="p-2 border rounded hover:bg-gray-100"
+            className="p-2 border rounded hover:bg-gray-100 hover:text-black"
           >
             <div className="flex justify-between items-center">
               <code className="font-mono">{cmd.command}</code>

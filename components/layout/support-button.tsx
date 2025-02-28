@@ -20,7 +20,7 @@ export default function SupportButton() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Support Our Tools
+            Support This Project
           </motion.h2>
           <motion.p
             className="mb-6 text-center"
@@ -28,7 +28,7 @@ export default function SupportButton() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-Your feedback and support help us improve and add powerful features. Together, we can make these tools even better for everyone!          </motion.p>
+Your feedback and support help us improve and add powerful features. Together, we can make these tools even better for everyone.        </motion.p>
          <DonateButton />
         </div>
       </motion.div>

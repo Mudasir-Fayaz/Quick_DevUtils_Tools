@@ -174,7 +174,7 @@ export default function StringReverse() {
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="entire" onValueChange={(value) => setReverseType(value as any)}>
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
+            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-10">
               <TabsTrigger value="entire">Entire String</TabsTrigger>
               <TabsTrigger value="words">Word Order</TabsTrigger>
               <TabsTrigger value="individual">Individual Words</TabsTrigger>

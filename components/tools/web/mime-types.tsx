@@ -5,19 +5,8 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { mimeTypes } from '@/data/mime-types'
 
-const mimeTypes: { [key: string]: string } = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'application/javascript',
-  '.json': 'application/json',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.gif': 'image/gif',
-  '.svg': 'image/svg+xml',
-  '.pdf': 'application/pdf',
-  // Add more MIME types as needed
-}
 
 const MimeTypes: React.FC = () => {
   const [input, setInput] = useState('')

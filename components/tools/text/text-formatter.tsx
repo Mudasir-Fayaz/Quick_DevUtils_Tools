@@ -222,7 +222,7 @@ interface TextStatistics {
       </div>
       <div className="mt-6">
         <Tabs defaultValue="basic">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 sm:text-sm">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 text-xs md:text-sm mb-6">
             <TabsTrigger value="basic">Basic</TabsTrigger>
             <TabsTrigger value="advanced">Advanced</TabsTrigger>
             <TabsTrigger value="formatting">Formatting</TabsTrigger>

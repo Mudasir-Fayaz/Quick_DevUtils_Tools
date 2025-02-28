@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { toggleModal } from '@/lib/features/uiSlice';
-import { toolsData } from '@/data';
+import { toolsData } from '@/tools';
 import Link from 'next/link';
 const SearchModal = () => {
   const dispatch = useAppDispatch();

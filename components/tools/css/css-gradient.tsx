@@ -233,7 +233,7 @@ const CSSGradient = () => {
             <div className="mt-4">
               <Label>CSS Code</Label>
               <div className="relative">
-                <pre className="bg-gray-100 p-2 rounded-lg overflow-x-auto">
+                <pre className=" p-2 rounded-lg overflow-x-auto">
                   <code>{cssCode}</code>
                 </pre>
                 <Button

@@ -143,7 +143,7 @@ const XmlConverter: React.FC = () => {
         
 
         <div className="space-y-6">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <Tabs value={mode} onValueChange={(value) => setMode(value as ConversionMode)}>
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="xmlToJson">XML → JSON</TabsTrigger>
@@ -151,7 +151,7 @@ const XmlConverter: React.FC = () => {
               </TabsList>
             </Tabs>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
               {mode === 'xmlToJson' && (
                 <div className="flex items-center space-x-2">
                   <Switch

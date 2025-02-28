@@ -23,7 +23,7 @@ export interface ToolCategory {
   name: string;
   icon: string;
   tools: Tool[];
- 
+
 }
 type IconKey = string;
 

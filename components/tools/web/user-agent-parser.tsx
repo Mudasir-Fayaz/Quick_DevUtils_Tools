@@ -97,7 +97,7 @@ function InfoCard({ icon, title, items,  delay }: InfoCardProps) {
       <CardContent>
         <ul className="space-y-1">
           {items.map((item, index) => (
-            <li key={index} className="text-sm text-gray-600">
+            <li key={index} className="text-sm">
               {item}
             </li>
           ))}

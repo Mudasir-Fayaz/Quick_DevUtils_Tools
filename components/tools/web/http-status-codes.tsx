@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { httpStatusCodes, HttpStatusCode } from '@/data/http-codes'
+import { httpStatusCodes, HttpStatusCode } from '@/tools/http-codes'
 import { Input } from '@/components/ui/input'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

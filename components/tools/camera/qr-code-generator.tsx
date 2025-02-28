@@ -50,7 +50,7 @@ export default function QRCodeGenerator() {
       <CardHeader>
         <CardTitle></CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6">
         <div className="space-y-2">
           <Label htmlFor="qr-text">QR Code Text</Label>
           <Input

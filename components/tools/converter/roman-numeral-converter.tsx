@@ -120,74 +120,72 @@ const RomanNumeralConverter: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto space-y-6"
+      className="container mx-auto p-4 space-y-6"
     >
       <div>
-        
+      <div className="space-y-6">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <Tabs value={mode} onValueChange={(value) => setMode(value as 'toRoman' | 'fromRoman')}>
+          <TabsList className="flex flex-col md:flex-row">
+          <TabsTrigger value="toRoman" className="md:mr-2">Number → Roman</TabsTrigger>
+          <TabsTrigger value="fromRoman">Roman → Number</TabsTrigger>
+          </TabsList>
+        </Tabs>
 
-        <div className="space-y-6">
-          <div className="flex justify-between items-center">
-            <Tabs value={mode} onValueChange={(value) => setMode(value as 'toRoman' | 'fromRoman')}>
-              <TabsList>
-                <TabsTrigger value="toRoman">Number → Roman</TabsTrigger>
-                <TabsTrigger value="fromRoman">Roman → Number</TabsTrigger>
-              </TabsList>
-            </Tabs>
-
-            <Button variant="outline" onClick={handleSwapMode}>
-              <ArrowUpDown className="h-4 w-4 mr-2" />
-              Swap
-            </Button>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              {mode === 'toRoman' ? 'Enter Number (1-3999):' : 'Enter Roman Numeral:'}
-            </label>
-            <Input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={mode === 'toRoman' ? 'Enter a number...' : 'Enter a Roman numeral...'}
-              className="font-mono"
-            />
-          </div>
-
-          <AnimatePresence>
-            {(result || error) && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="space-y-2"
-              >
-                <Card className={error ? 'border-red-500' : ''}>
-                  <CardContent className="p-4">
-                    <div className="flex justify-between items-center">
-                      <div className="space-y-1 flex-1">
-                        <label className="block text-sm font-medium">
-                          {error ? 'Error:' : 'Result:'}
-                        </label>
-                        <code className="block text-sm bg-gray-100 dark:bg-gray-700 p-2 rounded break-all font-mono">
-                          {error || result}
-                        </code>
-                      </div>
-                      {!error && (
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          onClick={handleCopy}
-                          className="ml-4"
-                        >
-                          <Copy className="h-4 w-4" />
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <Button variant="outline" onClick={handleSwapMode} className="mt-4 md:mt-0">
+          <ArrowUpDown className="h-4 w-4 mr-2" />
+          Swap
+        </Button>
         </div>
+
+        <div>
+        <label className="block text-sm font-medium mb-2">
+          {mode === 'toRoman' ? 'Enter Number (1-3999):' : 'Enter Roman Numeral:'}
+        </label>
+        <Input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder={mode === 'toRoman' ? 'Enter a number...' : 'Enter a Roman numeral...'}
+          className="font-mono w-full"
+        />
+        </div>
+
+        <AnimatePresence>
+        {(result || error) && (
+          <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="space-y-2"
+          >
+          <Card className={error ? 'border-red-500' : ''}>
+            <CardContent className="p-4">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="space-y-1 flex-1">
+              <label className="block text-sm font-medium">
+                {error ? 'Error:' : 'Result:'}
+              </label>
+              <code className="block text-sm bg-gray-100 dark:bg-gray-700 p-2 rounded break-all font-mono">
+                {error || result}
+              </code>
+              </div>
+              {!error && (
+              <Button
+                size="icon"
+                variant="ghost"
+                onClick={handleCopy}
+                className="mt-4 md:mt-0 md:ml-4"
+              >
+                <Copy className="h-4 w-4" />
+              </Button>
+              )}
+            </div>
+            </CardContent>
+          </Card>
+          </motion.div>
+        )}
+        </AnimatePresence>
+      </div>
       </div>
     </motion.div>
   );

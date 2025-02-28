@@ -1,4 +1,4 @@
-import { toolsData } from '@/data';
+import { toolsData } from '@/tools';
 import { NextResponse } from 'next/server';
 
 // Replace this with your actual base URL

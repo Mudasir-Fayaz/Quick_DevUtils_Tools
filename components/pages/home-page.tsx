@@ -9,10 +9,10 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { RootState } from '@/lib/store';
 import { setFilteredCategories, setCategories } from '@/lib/features/toolSlice';
 import { ToolCategory } from '@/types';
-import { toolsData } from '@/data';
+import { toolsData } from '@/tools';
 import { setActiveTool } from '@/lib/features/activeToolSlice';
 import Link from 'next/link';
-import { toolIcons } from '@/data/tool-icons';
+import { toolIcons } from '@/tools/tool-icons';
 import { File } from 'lucide-react';
 export default function HomePage() {
  
@@ -86,9 +86,9 @@ if (firstPeriodIndex !== -1) {
             >
               <Link href={tool.slug}>
              
-              <Card className="h-full cursor-pointer hover:shadow-lg transition-all duration-300 group">
+              <Card className="h-full cursor-pointer hover:shadow-lg group">
                 <CardHeader>
-                  <CardTitle className="flex items-center justify-between group-hover:text-primary transition-colors duration-300">
+                  <CardTitle className="flex items-center justify-between group-hover:text-primary">
                     {tool.name}
                      <IconComponent className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />  
                   </CardTitle>

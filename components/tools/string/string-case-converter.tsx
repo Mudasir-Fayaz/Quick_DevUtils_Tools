@@ -184,22 +184,26 @@ export default function StrCaseConvert() {
           <CardTitle>Conversion Options</CardTitle>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="uppercase" onValueChange={(value) => setConversionType(value as keyof typeof caseConversions)}>
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5">
-              <TabsTrigger value="uppercase">UPPERCASE</TabsTrigger>
-              <TabsTrigger value="lowercase">lowercase</TabsTrigger>
-              <TabsTrigger value="titleCase">Title Case</TabsTrigger>
-              <TabsTrigger value="sentenceCase">Sentence case</TabsTrigger>
-              <TabsTrigger value="camelCase">camelCase</TabsTrigger>
-            </TabsList>
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mt-2">
-              <TabsTrigger value="pascalCase">PascalCase</TabsTrigger>
-              <TabsTrigger value="snakeCase">snake_case</TabsTrigger>
-              <TabsTrigger value="kebabCase">kebab-case</TabsTrigger>
-              <TabsTrigger value="alternatingCase">aLtErNaTiNg</TabsTrigger>
-              <TabsTrigger value="inverseCase">iNVERSE</TabsTrigger>
-            </TabsList>
-          </Tabs>
+        <Select onValueChange={(value) => setConversionType(value as keyof typeof caseConversions)}>
+  <SelectTrigger className="w-full px-3 py-2 text-sm">
+    <SelectValue placeholder="Select a case type" />
+  </SelectTrigger>
+  
+  <SelectContent className="w-full">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 p-2">
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="uppercase">UPPERCASE</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="lowercase">lowercase</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="titleCase">Title Case</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="sentenceCase">Sentence case</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="camelCase">camelCase</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="pascalCase">PascalCase</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="snakeCase">snake_case</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="kebabCase">kebab-case</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="alternatingCase">aLtErNaTiNg</SelectItem>
+      <SelectItem className="min-w-max px-3 py-2 text-sm" value="inverseCase">iNVERSE</SelectItem>
+    </div>
+  </SelectContent>
+</Select>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div className="flex items-center space-x-2">
               <Switch

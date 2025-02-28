@@ -76,7 +76,7 @@ export default function Footer() {
                 <Github size={24} />
                 <span className="sr-only">GitHub</span>
               </a>
-              <a href="https://x.com/@coder_mudasir" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a href="https://x.com/@mudasirbuilds" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
                 <Twitter size={24} />
                 <span className="sr-only">Twitter</span>
               </a>

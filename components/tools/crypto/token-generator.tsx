@@ -124,7 +124,7 @@ const TokenGenerator: React.FC = () => {
             />
             <motion.div
               className="absolute right-2 top-1/2 -translate-y-1/2 flex space-x-2"
-              whileHover={{ scale: 1.05 }}
+             
             >
               <TooltipProvider>
                 <Tooltip>

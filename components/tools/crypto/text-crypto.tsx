@@ -104,97 +104,93 @@ const TextCrypto: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto space-y-6"
+      className="container mx-auto p-4 space-y-6"
     >
+      <div className="space-y-6">
+      <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <Select value={algorithm} onValueChange={(value: Algorithm) => setAlgorithm(value)}>
+        <SelectTrigger className="w-full md:w-[200px]">
+          <SelectValue placeholder="Select algorithm" />
+        </SelectTrigger>
+        <SelectContent>
+          {algorithms.map((algo) => (
+          <SelectItem key={algo} value={algo}>{algo}</SelectItem>
+          ))}
+        </SelectContent>
+        </Select>
+
+        <Button variant="outline" onClick={handleSwitch} className="w-full md:w-auto">
+        <ArrowDownUp className="mr-2 h-4 w-4" />
+        Switch to {mode === 'encrypt' ? 'Decrypt' : 'Encrypt'}
+        </Button>
+      </div>
+
       <div>
-        
+        <label className="block text-sm font-medium mb-2">
+        {mode === 'encrypt' ? 'Your text:' : 'Your encrypted text:'}
+        </label>
+        <Textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder={mode === 'encrypt' ? 'Enter text to encrypt...' : 'Enter encrypted text...'}
+        className="mb-4"
+        rows={4}
+        />
+      </div>
 
-        <div className="space-y-6">
-          <div className="flex justify-between items-center">
-            <Select value={algorithm} onValueChange={(value: Algorithm) => setAlgorithm(value)}>
-              <SelectTrigger className="w-[200px]">
-                <SelectValue placeholder="Select algorithm" />
-              </SelectTrigger>
-              <SelectContent>
-                {algorithms.map((algo) => (
-                  <SelectItem key={algo} value={algo}>{algo}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+      <div>
+        <label className="block text-sm font-medium mb-2">Your secret key:</label>
+        <Input
+        type="text"
+        value={key}
+        onChange={(e) => setKey(e.target.value)}
+        placeholder="Enter your secret key..."
+        className="mb-4"
+        />
+      </div>
 
-            <Button variant="outline" onClick={handleSwitch}>
-              <ArrowDownUp className="mr-2 h-4 w-4" />
-              Switch to {mode === 'encrypt' ? 'Decrypt' : 'Encrypt'}
-            </Button>
-          </div>
+      <Button
+        onClick={processText}
+        disabled={isProcessing || !text || !key}
+        className="w-full"
+      >
+        {isProcessing ? (
+        <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+        mode === 'encrypt' ? 'Encrypt' : 'Decrypt'
+        )}
+      </Button>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              {mode === 'encrypt' ? 'Your text:' : 'Your encrypted text:'}
-            </label>
-            <Textarea
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder={mode === 'encrypt' ? 'Enter text to encrypt...' : 'Enter encrypted text...'}
-              className="mb-4"
-              rows={4}
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-2">Your secret key:</label>
-            <Input
-              type="text"
-              value={key}
-              onChange={(e) => setKey(e.target.value)}
-              placeholder="Enter your secret key..."
-              className="mb-4"
-            />
-          </div>
-
+      <AnimatePresence>
+        {result && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="space-y-2"
+        >
+          <div className="relative">
+          <label className="block text-sm font-medium mb-2">
+            {mode === 'encrypt' ? 'Encrypted text:' : 'Decrypted text:'}
+          </label>
+          <Textarea
+            value={result}
+            readOnly
+            className="pr-12"
+            rows={4}
+          />
           <Button
-            onClick={processText}
-            disabled={isProcessing || !text || !key}
-            className="w-full"
+            size="icon"
+            variant="ghost"
+            onClick={handleCopy}
+            className="absolute right-2 top-8"
           >
-            {isProcessing ? (
-              <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              mode === 'encrypt' ? 'Encrypt' : 'Decrypt'
-            )}
+            <Copy className="h-4 w-4" />
           </Button>
-
-          <AnimatePresence>
-            {result && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="space-y-2"
-              >
-                <div className="relative">
-                  <label className="block text-sm font-medium mb-2">
-                    {mode === 'encrypt' ? 'Encrypted text:' : 'Decrypted text:'}
-                  </label>
-                  <Textarea
-                    value={result}
-                    readOnly
-                    className="pr-12"
-                    rows={4}
-                  />
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    onClick={handleCopy}
-                    className="absolute right-2 top-8"
-                  >
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+          </div>
+        </motion.div>
+        )}
+      </AnimatePresence>
       </div>
     </motion.div>
   );

@@ -1,256 +1,257 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import figlet, { type Fonts } from "figlet"
 import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { AlertCircle, Copy, Download, RefreshCw, Image as ImageIcon } from "lucide-react"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
-import { toast } from "@/hooks/use-toast"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Download, Copy, RefreshCw, Check } from "lucide-react"
+import html2canvas from "html2canvas"
 
-// ASCII art fonts (simplified for this example)
-const asciiFonts = {
-  standard: (text: string) => text,
-  block: (text: string) => text.split('').map(char => char.toUpperCase().repeat(2)).join(''),
-  shadow: (text: string) => text.split('').map(char => `${char}\\`).join(''),
-  slant: (text: string) => text.split('').map(char => `/${char}`).join(''),
-  digital: (text: string) => text.split('').map(char => `[${char}]`).join(''),
-}
+import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
+import { Slider } from "@/components/ui/slider"
+import { Label } from "@/components/ui/label"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Switch } from "@/components/ui/switch"
+import asciiFonts from "@/data/ascii-fonts"
+const colorPresets = [
+  { bg: "bg-white", text: "text-black", name: "Light" },
+  { bg: "bg-black", text: "text-green-500", name: "Matrix" },
+  { bg: "bg-blue-950", text: "text-cyan-400", name: "Ocean" },
+  { bg: "bg-purple-950", text: "text-pink-500", name: "Neon" },
+  { bg: "bg-amber-950", text: "text-amber-500", name: "Retro" },
+]
 
 export default function AsciiArt() {
-  const [input, setInput] = useState("")
-  const [output, setOutput] = useState("")
-  const [font, setFont] = useState("standard")
-  const [alignment, setAlignment] = useState("left")
+  const [input, setInput] = useState("ASCII ART")
+  const [font, setFont] = useState("Standard")
   const [width, setWidth] = useState(80)
-  const [color, setColor] = useState("default")
-  const [charSet, setCharSet] = useState("#*o.")
-  const [fontSize, setFontSize] = useState(14)
-  const [error, setError] = useState<string | null>(null)
+  const [output, setOutput] = useState("")
+  const [errored, setErrored] = useState(false)
+  const [processing, setProcessing] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const [colorScheme, setColorScheme] = useState(0)
+  const [animateText, setAnimateText] = useState(true)
+  const artRef = useRef<HTMLDivElement>(null)
 
-  const convertTextToAscii = (text: string, selectedFont: keyof typeof asciiFonts, align: string, maxWidth: number, textColor: string, characters: string) => {
-    try {
-      let asciiArt = asciiFonts[selectedFont](text)
+  useEffect(() => {
+    figlet.defaults({ fontPath: "//unpkg.com/figlet@1.6.0/fonts/" })
+  }, [])
 
-      // Apply custom character set
-      if (selectedFont === "standard") {
-        asciiArt = text.split('').map(() => characters[Math.floor(Math.random() * characters.length)]).join('')
-      }
+  useEffect(() => {
+    let isMounted = true
+    setProcessing(true)
 
-      // Apply alignment
-      asciiArt = asciiArt.split('\n').map(line => {
-        if (align === "center") {
-          return line.padStart((maxWidth + line.length) / 2).padEnd(maxWidth)
-        } else if (align === "right") {
-          return line.padStart(maxWidth)
+    const generateArt = async () => {
+      try {
+        const options: figlet.Options = {
+          font: font as Fonts,
+          width: Number(width),
+          whitespaceBreak: true,
         }
-        return line.padEnd(maxWidth)
-      }).join('\n')
 
-      // Apply color (in this example, we're just wrapping the text in color tags)
-      if (textColor !== "default") {
-        asciiArt = `<span style="color: ${textColor}">${asciiArt}</span>`
+        const result = await new Promise<string>((resolve, reject) => {
+          figlet.text(input || "ASCII ART", options, (err, text) => {
+            if (err) reject(err)
+            resolve(text || "")
+          })
+        })
+
+        if (isMounted) {
+          setOutput(result)
+          setErrored(false)
+        }
+      } catch (error) {
+        if (isMounted) setErrored(true)
+      } finally {
+        if (isMounted) setProcessing(false)
       }
+    }
 
-      setOutput(asciiArt)
-      setError(null)
-    } catch (err) {
-      setError((err as Error).message)
-      setOutput("")
+    const timer = setTimeout(() => {
+      generateArt()
+    }, 300) // Debounce
+
+    return () => {
+      isMounted = false
+      clearTimeout(timer)
+    }
+  }, [input, font, width])
+
+  const downloadAsImage = async () => {
+    if (!artRef.current) return
+
+    try {
+      const canvas = await html2canvas(artRef.current, {
+        backgroundColor: null,
+        scale: 2,
+      })
+
+      const link = document.createElement("a")
+      link.download = `ascii-art-${input.substring(0, 10)}.png`
+      link.href = canvas.toDataURL("image/png")
+      link.click()
+    } catch (error) {
+      console.error("Error generating image:", error)
     }
   }
 
-  useEffect(() => {
-    convertTextToAscii(input, font as keyof typeof asciiFonts, alignment, width, color, charSet)
-  }, [input, font, alignment, width, color, charSet])
-
-  const handleClear = () => {
-    setInput("")
-    setOutput("")
-    setError(null)
-  }
-
-  const handleCopy = () => {
+  const copyToClipboard = () => {
     navigator.clipboard.writeText(output)
-    toast({
-      title: "Copied to clipboard",
-      description: "The ASCII art has been copied to your clipboard.",
-    })
-  }
-
-  const handleDownload = () => {
-    const blob = new Blob([output], { type: "text/plain" })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement("a")
-    a.href = url
-    a.download = "ascii_art.txt"
-    a.click()
-    URL.revokeObjectURL(url)
-  }
-
-  const handleImageDownload = () => {
-    const canvas = document.createElement("canvas")
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    canvas.width = width * 10
-    canvas.height = output.split('\n').length * fontSize
-
-    ctx.fillStyle = "white"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.fillStyle = color === "default" ? "black" : color
-    ctx.font = `${fontSize}px monospace`
-    output.split('\n').forEach((line, i) => {
-      ctx.fillText(line, 10, (i + 1) * fontSize)
-    })
-
-    const dataUrl = canvas.toDataURL("image/png")
-    const a = document.createElement("a")
-    a.href = dataUrl
-    a.download = "ascii_art.png"
-    a.click()
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
     <div className="container mx-auto space-y-6">
-      <Card className="w-full max-w-4xl mx-auto">
-        <CardHeader>
-          <CardTitle className="text-2xl md:text-3xl font-bold text-center"></CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Tabs defaultValue="input" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="input">Input</TabsTrigger>
-              <TabsTrigger value="output">Output</TabsTrigger>
-            </TabsList>
-            <TabsContent value="input">
-              <div className="space-y-4">
-                <Textarea
-                  placeholder="Enter your text here"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  rows={3}
+      <Card className="overflow-hidden border-2 shadow-lg">
+        <CardContent className="p-6 space-y-6">
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="text-input">Your Text</Label>
+              <Input
+                id="text-input"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type something amazing..."
+                className="text-lg"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="font-select">Font Style</Label>
+                <Select value={font} onValueChange={setFont}>
+                  <SelectTrigger id="font-select">
+                    <SelectValue placeholder="Select font" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {asciiFonts.map((f) => (
+                      <SelectItem key={f} value={f}>
+                        {f}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="width-slider">Width: {width}</Label>
+                <Slider
+                  id="width-slider"
+                  value={[width]}
+                  onValueChange={(values) => setWidth(values[0])}
+                  min={40}
+                  max={200}
+                  step={5}
+                  className="py-2"
                 />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="font">Font Style</Label>
-                    <Select value={font} onValueChange={setFont}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select font" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Object.keys(asciiFonts).map((fontName) => (
-                          <SelectItem key={fontName} value={fontName}>{fontName}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <Label htmlFor="animate-switch" className="cursor-pointer">
+                  Animate
+                </Label>
+                <Switch id="animate-switch" checked={animateText} onCheckedChange={setAnimateText} />
+              </div>
+
+              <div className="flex space-x-2">
+                {colorPresets.map((preset, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setColorScheme(index)}
+                    className={`w-6 h-6 rounded-full ${preset.bg} border-2 ${
+                      colorScheme === index ? "border-primary" : "border-transparent"
+                    }`}
+                    aria-label={`${preset.name} color theme`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              {processing ? (
+                <motion.div
+                  key="loading"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex items-center justify-center p-8"
+                >
+                  <RefreshCw className="h-8 w-8 animate-spin text-primary" />
+                </motion.div>
+              ) : errored ? (
+                <motion.div key="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <Alert variant="destructive">
+                    <AlertDescription>
+                      There was an error generating your ASCII art. Try different settings.
+                    </AlertDescription>
+                  </Alert>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="output"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="space-y-4"
+                >
+                  <Tabs defaultValue="preview">
+                    <TabsList className="grid w-full grid-cols-2">
+                      <TabsTrigger value="preview">Preview</TabsTrigger>
+                      <TabsTrigger value="text">Text</TabsTrigger>
+                    </TabsList>
+
+                    <TabsContent value="preview" className="mt-4">
+                      <div
+                        ref={artRef}
+                        className={`p-4 rounded-md overflow-auto ${colorPresets[colorScheme].bg} ${colorPresets[colorScheme].text}`}
+                      >
+                        {animateText ? (
+                          <motion.pre
+                            key={`${input}-${font}-${width}`}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3 }}
+                            className="font-mono whitespace-pre overflow-x-auto"
+                          >
+                            {output}
+                          </motion.pre>
+                        ) : (
+                          <pre className="font-mono whitespace-pre overflow-x-auto">{output}</pre>
+                        )}
+                      </div>
+                    </TabsContent>
+
+                    <TabsContent value="text" className="mt-4">
+                      <Textarea value={output} readOnly className="min-h-[200px] font-mono" />
+                    </TabsContent>
+                  </Tabs>
+
+                  <div className="flex justify-end space-x-2">
+                    <Button variant="outline" onClick={copyToClipboard} className="gap-2">
+                      {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                      {copied ? "Copied!" : "Copy Text"}
+                    </Button>
+                    <Button onClick={downloadAsImage} className="gap-2">
+                      <Download className="h-4 w-4" />
+                      Download Image
+                    </Button>
                   </div>
-                  <div>
-                    <Label htmlFor="alignment">Alignment</Label>
-                    <Select value={alignment} onValueChange={setAlignment}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select alignment" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="left">Left</SelectItem>
-                        <SelectItem value="center">Center</SelectItem>
-                        <SelectItem value="right">Right</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-                <div>
-                  <Label htmlFor="width">Width: {width} characters</Label>
-                  <Slider
-                    id="width"
-                    min={20}
-                    max={120}
-                    step={1}
-                    value={[width]}
-                    onValueChange={(value) => setWidth(value[0])}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="color">Text Color</Label>
-                  <Select value={color} onValueChange={setColor}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select color" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="default">Default</SelectItem>
-                      <SelectItem value="red">Red</SelectItem>
-                      <SelectItem value="blue">Blue</SelectItem>
-                      <SelectItem value="green">Green</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="charSet">Custom Character Set</Label>
-                  <Input
-                    id="charSet"
-                    value={charSet}
-                    onChange={(e) => setCharSet(e.target.value)}
-                    placeholder="Enter custom characters"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="fontSize">Font Size: {fontSize}px</Label>
-                  <Slider
-                    id="fontSize"
-                    min={8}
-                    max={24}
-                    step={1}
-                    value={[fontSize]}
-                    onValueChange={(value) => setFontSize(value[0])}
-                  />
-                </div>
-              </div>
-            </TabsContent>
-            <TabsContent value="output">
-              <AnimatePresence>
-                {error && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="text-red-500 flex items-center mb-4"
-                  >
-                    <AlertCircle className="mr-2 h-4 w-4" /> {error}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <div className="bg-secondary p-4 rounded-md overflow-x-auto">
-                <pre className="whitespace-pre-wrap break-all" style={{ fontSize: `${fontSize}px` }}>{output}</pre>
-              </div>
-              <div className="flex flex-wrap justify-between mt-4 gap-2">
-                <Button onClick={handleClear} variant="outline">
-                  <RefreshCw className="mr-2 h-4 w-4" /> Clear
-                </Button>
-                <Button onClick={handleCopy} variant="outline">
-                  <Copy className="mr-2 h-4 w-4" /> Copy
-                </Button>
-                <Button onClick={handleDownload} variant="outline">
-                  <Download className="mr-2 h-4 w-4" /> Download Text
-                </Button>
-                <Button onClick={handleImageDownload} variant="outline">
-                  <ImageIcon className="mr-2 h-4 w-4" /> Download Image
-                </Button>
-              </div>
-            </TabsContent>
-          </Tabs>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </CardContent>
       </Card>
     </div>
   )
 }
+

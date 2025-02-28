@@ -171,35 +171,35 @@ const HtmlEditor = () => {
       </Card>
 
       <Tabs defaultValue="preview" className="mt-4">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="source">Source Code</TabsTrigger>
+        <TabsList className="grid grid-cols-2 gap-2 md:gap-4">
+          <TabsTrigger value="preview" className="w-full text-center">Preview</TabsTrigger>
+          <TabsTrigger value="source" className="w-full text-center">Source Code</TabsTrigger>
         </TabsList>
         <TabsContent value="preview">
           <Card>
-            <CardContent className="p-6">
-              <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-            </CardContent>
+        <CardContent className="p-4 md:p-6">
+          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value="source">
           <Card>
-            <CardContent className="p-6">
-              <div className="relative">
-                <pre className="language-html rounded bg-muted p-4">
-                  <code>{htmlContent}</code>
-                </pre>
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="absolute top-2 right-2"
-                  onClick={copyToClipboard}
-                >
-                  <Copy className="h-4 w-4 mr-2" />
-                  Copy
-                </Button>
-              </div>
-            </CardContent>
+        <CardContent className="p-4 md:p-6">
+            <div className="relative">
+            <pre className="language-html rounded bg-muted p-4 overflow-x-auto max-w-full">
+              <code className="overflow-x-auto break-words">{htmlContent}</code>
+            </pre>
+            <Button
+              variant="secondary"
+              size="sm"
+              className="absolute top-2 right-2"
+              onClick={copyToClipboard}
+            >
+              <Copy className="h-4 w-4 mr-2" />
+              Copy
+            </Button>
+            </div>
+        </CardContent>
           </Card>
         </TabsContent>
       </Tabs>

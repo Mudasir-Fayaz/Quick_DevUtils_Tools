@@ -206,12 +206,13 @@ export default function JsonFormatter() {
             <CardDescription>Enter or paste your JSON here</CardDescription>
           </CardHeader>
           <CardContent>
-            <Textarea
-              className="w-full h-64 p-2 border rounded font-mono"
-              value={inputJSON}
-              onChange={(e) => setInputJSON(e.target.value)}
-              placeholder="Enter your JSON here..."
-            />
+          <Textarea
+  className="w-full max-w-[400px] h-64 p-2 border rounded font-mono overflow-x-auto resize-y"
+  value={inputJSON}
+  onChange={(e) => setInputJSON(e.target.value)}
+  placeholder="Enter your JSON here..."
+/>
+
           </CardContent>
           <CardFooter>
             <div className="text-sm text-muted-foreground">

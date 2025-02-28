@@ -46,7 +46,7 @@ return (<header className="bg-background border-b">
       </Button>
       <Link href='/'>
       
-      <div className="font-bold text-lg">Quick DevUtils</div>
+      <div className="font-bold text-base">Quick DevUtils</div>
       </Link>
 <SupportMeButton />
     </div>
@@ -57,8 +57,8 @@ return (<header className="bg-background border-b">
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       className="md:hidden"
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   </div>
@@ -81,8 +81,8 @@ return (<header className="bg-background border-b">
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       className="ml-4 hidden md:flex"
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   </div>

@@ -96,127 +96,125 @@ const UlidGenerator: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto space-y-6"
+      className="container mx-auto p-4 space-y-6"
     >
       <div>
-        
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">Format:</label>
-              <Select value={format} onValueChange={(value: FormatType) => setFormat(value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select format" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Raw">Raw</SelectItem>
-                  <SelectItem value="JSON">JSON</SelectItem>
-                  <SelectItem value="UUID">UUID-like</SelectItem>
-                  <SelectItem value="Base32">Base32</SelectItem>
-                  <SelectItem value="Binary">Binary</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-2">Format:</label>
+          <Select value={format} onValueChange={(value: FormatType) => setFormat(value)}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select format" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Raw">Raw</SelectItem>
+            <SelectItem value="JSON">JSON</SelectItem>
+            <SelectItem value="UUID">UUID-like</SelectItem>
+            <SelectItem value="Base32">Base32</SelectItem>
+            <SelectItem value="Binary">Binary</SelectItem>
+          </SelectContent>
+          </Select>
+        </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Quantity: {quantity}
-              </label>
-              <Slider
-                value={[quantity]}
-                onValueChange={([value]) => setQuantity(value)}
-                max={100}
-                min={1}
-                step={1}
-                className="w-full"
-              />
-            </div>
+        <div>
+          <label className="block text-sm font-medium mb-2">
+          Quantity: {quantity}
+          </label>
+          <Slider
+          value={[quantity]}
+          onValueChange={([value]) => setQuantity(value)}
+          max={100}
+          min={1}
+          step={1}
+          className="w-full"
+          />
+        </div>
+        </div>
+
+        <div className="space-y-4">
+        <div className="flex items-center space-x-2">
+          <Checkbox
+          id="monotonic"
+          checked={useMonotonic}
+          onCheckedChange={(checked) => setUseMonotonic(checked as boolean)}
+          />
+          <div className="space-y-1">
+          <div className="flex items-center space-x-2">
+            <label htmlFor="monotonic">Monotonic</label>
+            <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+              <Info className="h-4 w-4" />
+              </TooltipTrigger>
+              <TooltipContent>
+              <p>Ensures strictly increasing values even within the same millisecond</p>
+              </TooltipContent>
+            </Tooltip>
+            </TooltipProvider>
           </div>
-
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="monotonic"
-                checked={useMonotonic}
-                onCheckedChange={(checked) => setUseMonotonic(checked as boolean)}
-              />
-              <div className="space-y-1">
-                <div className="flex items-center space-x-2">
-                  <label htmlFor="monotonic">Monotonic</label>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <Info className="h-4 w-4" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Ensures strictly increasing values even within the same millisecond</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="lowercase"
-                checked={lowercase}
-                onCheckedChange={(checked) => setLowercase(checked as boolean)}
-              />
-              <label htmlFor="lowercase">Lowercase</label>
-            </div>
           </div>
         </div>
 
-        <div className="flex space-x-4 mb-6">
-          <Button onClick={generateUlid} disabled={isGenerating} className="flex-1">
-            {isGenerating ? (
-              <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              'Generate'
-            )}
-          </Button>
-          <Button onClick={handleCopyAll} variant="outline" disabled={!ulids.length}>
-            <Copy className="mr-2 h-4 w-4" />
-            Copy All
-          </Button>
-          <Button onClick={handleDownload} variant="outline" disabled={!ulids.length}>
-            <Download className="mr-2 h-4 w-4" />
-            Download
-          </Button>
-          <Button onClick={handleClear} variant="outline" disabled={!ulids.length}>
-            <Trash2 className="mr-2 h-4 w-4" />
-            Clear
-          </Button>
+        <div className="flex items-center space-x-2">
+          <Checkbox
+          id="lowercase"
+          checked={lowercase}
+          onCheckedChange={(checked) => setLowercase(checked as boolean)}
+          />
+          <label htmlFor="lowercase">Lowercase</label>
         </div>
+        </div>
+      </div>
 
-        <AnimatePresence>
-          <div className="space-y-2">
-            {ulids.map((id, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.2, delay: index * 0.05 }}
-              >
-                <Card>
-                  <CardContent className="p-4 flex justify-between items-center">
-                    <code className="font-mono text-sm break-all">{id}</code>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      onClick={() => handleCopy(id)}
-                    >
-                      <Copy className="h-4 w-4" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </AnimatePresence>
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6">
+        <Button onClick={generateUlid} disabled={isGenerating} className="flex-1">
+        {isGenerating ? (
+          <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          'Generate'
+        )}
+        </Button>
+        <Button onClick={handleCopyAll} variant="outline" disabled={!ulids.length} className="flex-1">
+        <Copy className="mr-2 h-4 w-4" />
+        Copy All
+        </Button>
+        <Button onClick={handleDownload} variant="outline" disabled={!ulids.length} className="flex-1">
+        <Download className="mr-2 h-4 w-4" />
+        Download
+        </Button>
+        <Button onClick={handleClear} variant="outline" disabled={!ulids.length} className="flex-1">
+        <Trash2 className="mr-2 h-4 w-4" />
+        Clear
+        </Button>
+      </div>
+
+      <AnimatePresence>
+        <div className="space-y-2">
+        {ulids.map((id, index) => (
+          <motion.div
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.2, delay: index * 0.05 }}
+          >
+          <Card>
+            <CardContent className="p-4 flex justify-between items-center">
+            <code className="font-mono text-sm break-all">{id}</code>
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={() => handleCopy(id)}
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+            </CardContent>
+          </Card>
+          </motion.div>
+        ))}
+        </div>
+      </AnimatePresence>
       </div>
     </motion.div>
   );

@@ -11,6 +11,7 @@ import StoreProvider from "../components/StoreProvider";
  import ComingSoonBanner from "@/components/layout/coming-soon-banner";
  import SupportButton from "@/components/layout/support-button";
 import { SideBar, SearchModal, GAScript } from "@/components/layout/nossr";
+import GitHubCard from "@/components/layout/github-card";
 
 
  
@@ -60,6 +61,7 @@ export default function RootLayout({
          <MainContainer>
 
             <Header />
+            <GitHubCard />
          <Container>
           {children}
           <SupportButton />

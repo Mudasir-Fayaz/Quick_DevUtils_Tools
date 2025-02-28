@@ -111,10 +111,10 @@ const ConsoleItem = ({ item }: { item: ConsoleOutput }) => {
       <div className="mr-2 mt-1">{getTypeIcon(item.type)}</div>
       <div className="flex-grow">
         <div className="flex items-center">
-          <span className="font-bold mr-2">[{item.type.toUpperCase()}]</span>
+          <span className="font-bold mr-2 text-black">[{item.type.toUpperCase()}]</span>
           <span className="text-xs text-gray-500 mr-2">Line {item.lineNumber}</span>
         </div>
-        <div className="mt-1">{renderContent()}</div>
+        <div className="mt-1 text-black">{renderContent()}</div>
       </div>
     </div>
   )

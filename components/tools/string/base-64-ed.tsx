@@ -172,7 +172,7 @@ export default function Base64EncodeDecode() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button onClick={copyToClipboard}>
-                    <Copy className="mr-2 h-4 w-4" /> Copy to Clipboard
+                    <Copy className="mr-2 h-4 w-4" /> Copy Text
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>

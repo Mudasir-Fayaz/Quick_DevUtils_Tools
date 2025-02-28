@@ -53,7 +53,7 @@ const Logo = () => {
         ))}
       </motion.h1>
       <motion.p className="text-sm mb-2" variants={logoVariants}>
-        Made by Mudasir Fayaz
+        Built by Mudasir Fayaz
       </motion.p>
       <motion.div className="flex space-x-4" variants={socialVariants}>
         <motion.a 

@@ -196,172 +196,187 @@ export default function TextEditor() {
 
   return (
     <motion.div
-      className={`flex flex-col h-screen ${isFullscreen ? 'fixed inset-0 z-50 bg-background' : ''}`}
+      className={`flex flex-col min-h-screen ${isFullscreen ? 'fixed inset-0 z-50 bg-background' : ''}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex items-center space-x-2 p-2 border-b">
+      <div className="flex flex-wrap items-center gap-2 p-2 border-b">
+      <div className="flex flex-wrap items-center gap-2">
         <Button variant="ghost" size="icon" onClick={() => insertText('**', '**')}>
-          <Bold className="h-4 w-4" />
+        <Bold className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => insertText('*', '*')}>
-          <Italic className="h-4 w-4" />
+        <Italic className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => insertText('# ')}>
-          <Heading className="h-4 w-4" />
+        <Heading className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => insertText('- ')}>
-          <List className="h-4 w-4" />
+        <List className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => insertText('[', '](url)')}>
-          <Link className="h-4 w-4" />
+        <Link className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => insertText('![alt text](', ')')}>
-          <Image className="h-4 w-4" />
+        <Image className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => insertText('```\n', '\n```')}>
-          <Code className="h-4 w-4" />
+        <Code className="h-4 w-4" />
         </Button>
-        <div className="flex-grow" />
+      </div>
+      <div className="flex-grow" />
+      <div className="flex flex-wrap items-center gap-2">
         <Button variant="ghost" size="icon" onClick={undo}>
-          <Undo className="h-4 w-4" />
+        <Undo className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={redo}>
-          <Redo className="h-4 w-4" />
+        <Redo className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={toggleFullscreen}>
-          <Maximize className="h-4 w-4" />
+        <Maximize className="h-4 w-4" />
         </Button>
         <Button variant="ghost" onClick={() => setShowCustomCSSModal(true)}>
-          <Paintbrush className="h-4 w-4 mr-2" />
-          Custom CSS
+        <Paintbrush className="h-4 w-4 md:mr-2" />
+        <span className="hidden md:inline">Custom CSS</span>
         </Button>
+      </div>
       </div>
       <Tabs value={activeTab} onValueChange={handleTabChange} className="flex-grow overflow-hidden">
-        <TabsList>
-          <TabsTrigger value="editor">Editor</TabsTrigger>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="split">Split View</TabsTrigger>
-        </TabsList>
-        <TabsContent value="editor" className="h-full">
-          <textarea
-            ref={editorRef}
-            value={markdown}
-            onChange={handleMarkdownChange}
-            className="w-full h-full p-4 resize-none focus:outline-none"
-            style={{ fontSize: `${fontSize}px` }}
-            placeholder="Write your markdown here..."
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            spellCheck="true"
-          />
-        </TabsContent>
-        <TabsContent value="preview" className="h-full overflow-auto">
-          <div
-            ref={previewRef}
-            className="prose max-w-none p-4 bg-white text-black h-full"
-            style={{ fontSize: `${fontSize}px` }}
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        </TabsContent>
-        <TabsContent value="split" className="h-full flex">
-          <div className="w-1/2 h-full overflow-auto">
-            <textarea
-              ref={editorRef}
-              value={markdown}
-              onChange={handleMarkdownChange}
-              className="w-full h-full p-4 resize-none focus:outline-none"
-              style={{ fontSize: `${fontSize}px` }}
-              placeholder="Write your markdown here..."
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
-              spellCheck="true"
-            />
-          </div>
-          <div className="w-1/2 h-full overflow-auto">
-            <div
-              ref={previewRef}
-              className="prose max-w-none p-4 bg-white text-black h-full"
-              style={{ fontSize: `${fontSize}px` }}
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          </div>
-        </TabsContent>
+      <TabsList className="flex-wrap">
+        <TabsTrigger value="editor">Editor</TabsTrigger>
+        <TabsTrigger value="preview">Preview</TabsTrigger>
+        <TabsTrigger value="split" className="hidden md:block">Split View</TabsTrigger>
+      </TabsList>
+      <TabsContent value="editor" className="h-full">
+        <textarea
+        ref={editorRef}
+        value={markdown}
+        onChange={handleMarkdownChange}
+        className="w-full h-full p-2 md:p-4 resize-none focus:outline-none"
+        style={{ fontSize: `${fontSize}px` }}
+        placeholder="Write your markdown here..."
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        spellCheck="true"
+        />
+      </TabsContent>
+      <TabsContent value="preview" className="h-full overflow-auto">
+        <div
+        ref={previewRef}
+        className="prose max-w-none p-2 md:p-4 bg-white text-black h-full"
+        style={{ fontSize: `${fontSize}px` }}
+        dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </TabsContent>
+      <TabsContent value="split" className="h-full hidden md:flex">
+        <div className="w-1/2 h-full overflow-auto border-r">
+        <textarea
+          ref={editorRef}
+          value={markdown}
+          onChange={handleMarkdownChange}
+          className="w-full h-full p-4 resize-none focus:outline-none"
+          style={{ fontSize: `${fontSize}px` }}
+          placeholder="Write your markdown here..."
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          spellCheck="true"
+        />
+        </div>
+        <div className="w-1/2 h-full overflow-auto">
+        <div
+          ref={previewRef}
+          className="prose max-w-none p-4 bg-white text-black h-full"
+          style={{ fontSize: `${fontSize}px` }}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+        </div>
+      </TabsContent>
       </Tabs>
-      <div className="flex flex-wrap items-center justify-between p-2 border-t">
-        <div className="flex items-center space-x-2">
-          <span>Font Size:</span>
-          <Slider
-            value={[fontSize]}
-            onValueChange={handleFontSizeChange}
-            min={12}
-            max={24}
-            step={1}
-            className="w-32"
-          />
-          <span>{fontSize}px</span>
-        </div>
-        <div className="text-sm text-muted-foreground">
-          Words: {wordCount} | Characters: {charCount}
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(markdown)}>
-            <Copy className="h-4 w-4 mr-2" />
-            Copy Markdown
-          </Button>
-          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(html)}>
-            <Copy className="h-4 w-4 mr-2" />
-            Copy HTML
-          </Button>
-          <Button variant="outline" size="sm" onClick={exportMarkdown}>
-            <FileText className="h-4 w-4 mr-2" />
-            Export .md
-          </Button>
-          <Button variant="outline" size="sm" onClick={exportHtml}>
-            <FileCode className="h-4 w-4 mr-2" />
-            Export .html
-          </Button>
-        </div>
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-2 gap-2 border-t">
+      <div className="flex items-center gap-2 w-full md:w-auto">
+        <span className="text-sm">Font Size:</span>
+        <Slider
+        value={[fontSize]}
+        onValueChange={handleFontSizeChange}
+        min={12}
+        max={24}
+        step={1}
+        className="w-32"
+        />
+        <span className="text-sm">{fontSize}px</span>
       </div>
-      <div className="flex items-center space-x-2 p-2 border-t">
+      <div className="text-sm text-muted-foreground">
+        Words: {wordCount} | Characters: {charCount}
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(markdown)}>
+        <Copy className="h-4 w-4 md:mr-2" />
+        <span className="hidden md:inline">Copy Markdown</span>
+        </Button>
+        <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(html)}>
+        <Copy className="h-4 w-4 md:mr-2" />
+        <span className="hidden md:inline">Copy HTML</span>
+        </Button>
+        <Button variant="outline" size="sm" onClick={exportMarkdown}>
+        <FileText className="h-4 w-4 md:mr-2" />
+        <span className="hidden md:inline">Export .md</span>
+        </Button>
+        <Button variant="outline" size="sm" onClick={exportHtml}>
+        <FileCode className="h-4 w-4 md:mr-2" />
+        <span className="hidden md:inline">Export .html</span>
+        </Button>
+      </div>
+      </div>
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-2 p-2 border-t">
+      <div className="flex items-center gap-2 w-full md:w-auto">
         <Input
-          placeholder="Find"
-          value={findText}
-          onChange={(e) => setFindText(e.target.value)}
+        placeholder="Find"
+        value={findText}
+        onChange={(e) => setFindText(e.target.value)}
+        className="min-w-[100px]"
         />
         <Button onClick={handleFind}>
-          <Search className="h-4 w-4 mr-2" />
-          Find
-        </Button>
-        <Input
-          placeholder="Replace"
-          value={replaceText}
-          onChange={(e) => setReplaceText(e.target.value)}
-        />
-        <Button onClick={handleReplace}>
-          <Replace className="h-4 w-4 mr-2" />
-          Replace All
+        <Search className="h-4 w-4 md:mr-2" />
+        <span className="hidden md:inline">Find</span>
         </Button>
       </div>
+      <div className="flex items-center gap-2 w-full md:w-auto">
+        <Input
+        placeholder="Replace"
+        value={replaceText}
+        onChange={(e) => setReplaceText(e.target.value)}
+        className="min-w-[100px]"
+        />
+        <Button onClick={handleReplace}>
+        <Replace className="h-4 w-4 md:mr-2" />
+        <span className="hidden md:inline">Replace All</span>
+        </Button>
+      </div>
+      </div>
       <Dialog open={showCustomCSSModal} onOpenChange={setShowCustomCSSModal}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Custom CSS</DialogTitle>
-          </DialogHeader>
-          <Textarea
-            value={customCSS}
-            onChange={(e) => setCustomCSS(e.target.value)}
-            placeholder="Enter your custom CSS here..."
-            className="h-64"
-          />
-          <DialogFooter>
-            <Button onClick={() => handleCustomCSSChange(customCSS)}>Save</Button>
-          </DialogFooter>
-        </DialogContent>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+        <DialogTitle>Custom CSS</DialogTitle>
+        </DialogHeader>
+        <Textarea
+        value={customCSS}
+        onChange={(e) => setCustomCSS(e.target.value)}
+        placeholder="Enter your custom CSS here..."
+        className="h-64"
+        />
+        <DialogFooter>
+        <Button onClick={() => handleCustomCSSChange(customCSS)}>Save</Button>
+        </DialogFooter>
+      </DialogContent>
       </Dialog>
       <style jsx global>{`
-        ${customCSS}
+      ${customCSS}
+      @media (max-width: 768px) {
+        .prose {
+        font-size: 0.9em;
+        }
+      }
       `}</style>
     </motion.div>
   )

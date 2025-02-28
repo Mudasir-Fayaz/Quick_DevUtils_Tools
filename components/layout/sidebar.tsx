@@ -7,12 +7,12 @@ import { cn } from '@/lib/utils'
 import { Sidebar,ChevronDown, ChevronRight, ArrowLeft, File  } from 'lucide-react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { toggleSidebar } from '@/lib/features/uiSlice';
-import { toolsData } from '@/data'
+import { toolsData } from '@/tools'
 import { ToolCategory } from '@/types'
 import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
 import Link from 'next/link'
-import { toolIcons } from '@/data/tool-icons'
+import { toolIcons } from '@/tools/tool-icons'
 import DonateButton from './donate-button'
 import Logo from './logo'
 

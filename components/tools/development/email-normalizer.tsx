@@ -67,8 +67,8 @@ export default function EmailNormalizer() {
             animate={{ opacity: 1 }}
             className="p-4 bg-gray-100 rounded"
           >
-            <h2 className="text-lg font-semibold mb-2">Normalized Emails</h2>
-            <ul className="list-disc pl-5">
+            <h2 className="text-lg font-semibold mb-2 text-black">Normalized Emails</h2>
+            <ul className="list-disc pl-5 text-black">
               {normalizedEmails.map((email, index) => (
                 <li key={index}>{email}</li>
               ))}
