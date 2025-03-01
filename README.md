@@ -259,7 +259,7 @@ Quick DevUtils is categorized into the following toolsets:
 First, clone the repository:
 
 ```bash
-gh repo clone Mudasir-Fayaz/Quick_DevUtils
+gh repo clone Mudasir-Fayaz/Quick_DevUtils_Tools
 # or
 git clone https://github.com/Mudasir-Fayaz/Quick_DevUtils_Tools.git
 ```
