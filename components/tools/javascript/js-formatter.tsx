@@ -76,6 +76,7 @@ export default function JSFormatter() {
   useEffect(() => {
     handleFormat()
   }, [input, options, handleFormat])
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)
   }

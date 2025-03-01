@@ -54,6 +54,7 @@ export default function TimeDifference() {
 
     setDifference({ years, months, days, hours, minutes })
   }
+  
   useEffect(() => {
     if (startDate && endDate) {
       calculateDifference()
