@@ -73,7 +73,7 @@ const TomlConverter: React.FC = () => {
         variant: "destructive",
       });
     }
-  }, [input, mode, isPretty]);
+  }, [input, mode, isPretty, convertTomlToJson]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

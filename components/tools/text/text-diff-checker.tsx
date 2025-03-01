@@ -64,6 +64,18 @@ export default function DiffChecker() {
     return diff
   }
 
+
+  const calculateSimilarity = (str1: string, str2: string): number => {
+    const longer = str1.length > str2.length ? str1 : str2
+    const shorter = str1.length > str2.length ? str2 : str1
+    const longerLength = longer.length
+    if (longerLength === 0) {
+      return 1.0
+    }
+    return (longerLength - editDistance(longer, shorter)) / longerLength
+  }
+
+
   const updateDiff = useCallback(() => {
     let processedText1 = text1
     let processedText2 = text2
@@ -97,7 +109,7 @@ export default function DiffChecker() {
     // Calculate readability score
     setReadabilityScore(calculateReadabilityScore(text1 + ' ' + text2))
 
-  }, [text1, text2, options])
+  }, [text1, text2, options, calculateSimilarity])
 
   useEffect(() => {
     updateDiff()
@@ -179,15 +191,7 @@ export default function DiffChecker() {
     document.body.removeChild(element)
   }
 
-  const calculateSimilarity = (str1: string, str2: string): number => {
-    const longer = str1.length > str2.length ? str1 : str2
-    const shorter = str1.length > str2.length ? str2 : str1
-    const longerLength = longer.length
-    if (longerLength === 0) {
-      return 1.0
-    }
-    return (longerLength - editDistance(longer, shorter)) / longerLength
-  }
+  
 
   const editDistance = (str1: string, str2: string): number => {
     const m = str1.length

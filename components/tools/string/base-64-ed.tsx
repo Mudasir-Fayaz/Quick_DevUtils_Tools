@@ -39,10 +39,7 @@ export default function Base64EncodeDecode() {
   const [error, setError] = useState<string | null>(null)
   const [myFile, setFile] = useState<File | null>(null)
 
-  useEffect(() => {
-    handleConversion()
-  }, [inputText, mode, urlSafe])
-
+  
   const handleConversion = () => {
     setError(null)
     if (!inputText) {
@@ -61,6 +58,9 @@ export default function Base64EncodeDecode() {
       setOutputText("")
     }
   }
+  useEffect(() => {
+    handleConversion()
+  }, [inputText, mode, urlSafe, handleConversion])
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]

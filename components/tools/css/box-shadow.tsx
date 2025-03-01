@@ -62,10 +62,7 @@ export default function BoxShadow() {
   const [isAnimated, setIsAnimated] = useState(false)
   const [animationDuration, setAnimationDuration] = useState(2)
 
-  useEffect(() => {
-    generateCSS()
-  }, [shadows, boxStyle, isAnimated, animationDuration])
-
+  
   const generateCSS = () => {
     const boxShadowCSS = shadows.map(shadow => 
       `${shadow.inset ? 'inset ' : ''}${shadow.offsetX}px ${shadow.offsetY}px ${shadow.blur}px ${shadow.spread}px ${shadow.color}`
@@ -96,6 +93,9 @@ export default function BoxShadow() {
 
     setGeneratedCSS(css)
   }
+  useEffect(() => {
+    generateCSS()
+  }, [shadows, boxStyle, isAnimated, animationDuration, generateCSS])
 
   const updateShadow = (index: number, key: keyof Shadow, value: number | string | boolean) => {
     const newShadows = [...shadows]

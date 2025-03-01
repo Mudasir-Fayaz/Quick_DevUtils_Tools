@@ -19,11 +19,7 @@ export default function JsonPath() {
   const [copied, setCopied] = useState(false)
   const [activeTab, setActiveTab] = useState('input')
 
-  useEffect(() => {
-    if (jsonInput && jsonPath) {
-      findJSONPath()
-    }
-  }, [jsonInput, jsonPath])
+  
 
   const findJSONPath = () => {
     setError('')
@@ -38,7 +34,11 @@ export default function JsonPath() {
       setError('Invalid JSON input or JSONPath query. Please check your input and try again.')
     }
   }
-
+  useEffect(() => {
+    if (jsonInput && jsonPath) {
+      findJSONPath()
+    }
+  }, [jsonInput, jsonPath, findJSONPath])
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {

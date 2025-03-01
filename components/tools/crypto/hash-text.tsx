@@ -26,13 +26,6 @@ const HashText: React.FC = () => {
 
   const hashFunctions: HashFunction[] = ['MD5', 'SHA1', 'SHA256', 'SHA224', 'SHA512', 'SHA384', 'SHA3', 'RIPEMD160'];
   const digestEncodings: DigestEncoding[] = ['Hex', 'Base64', 'Latin1', 'Utf8', 'Utf16', 'Utf16LE', 'Base64url'];
-
-  useEffect(() => {
-    if (inputText) {
-      generateHashResult();
-    }
-  }, [inputText, hashFunction, digestEncoding]);
-
   const generateHashResult = () => {
     setIsGenerating(true);
     setTimeout(() => {
@@ -41,6 +34,13 @@ const HashText: React.FC = () => {
       setIsGenerating(false);
     }, 300);
   };
+
+  useEffect(() => {
+    if (inputText) {
+      generateHashResult();
+    }
+  }, [inputText, hashFunction, digestEncoding, generateHashResult]);
+
 
   const handleCopy = () => {
     navigator.clipboard.writeText(hashResult).then(() => {

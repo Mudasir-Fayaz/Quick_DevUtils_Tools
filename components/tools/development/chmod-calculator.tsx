@@ -41,7 +41,7 @@ export default function ChmodCalculator() {
 
   useEffect(() => {
     calculatePermissions()
-  }, [owner, group, public_])
+  }, [owner, group, public_, calculatePermissions])
 
   const handleCopy = () => {
     navigator.clipboard.writeText(`chmod ${numericValue} path`)

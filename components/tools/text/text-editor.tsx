@@ -62,7 +62,7 @@ export default function TextEditor() {
         .process(md)
       setHtml(result.toString())
     }, 300),
-    []
+    [setHtml]
   )
 
   useEffect(() => {

@@ -70,7 +70,20 @@ export default function PomodoroTimer() {
       if (bgMusicRef.current) bgMusicRef.current.pause()
     }
   }, [selectedAlertSound])
-
+  const handleSessionComplete = () => {
+    playSound()
+    if (currentSession === 'work') {
+      setSessionsCompleted(prev => prev + 1)
+      setCurrentSession(sessionsCompleted % 4 === 3 ? 'longBreak' : 'shortBreak')
+      setTimeLeft((sessionsCompleted % 4 === 3 ? longBreakDuration : shortBreakDuration) * 60)
+    } else {
+      setBreaksTaken(prev => prev + 1)
+      setCurrentSession('work')
+      setTimeLeft(workDuration * 60)
+    }
+    showNotification()
+    displayMotivationalMessage()
+  }
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null
 
@@ -92,7 +105,7 @@ export default function PomodoroTimer() {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [isActive, timeLeft])
+  }, [isActive, timeLeft,handleSessionComplete])
 
   useEffect(() => {
     if (alertAudioRef.current) alertAudioRef.current.volume = volume / 100
@@ -114,20 +127,7 @@ export default function PomodoroTimer() {
     setIsBackgroundMusicPlaying(!isBackgroundMusicPlaying)
   }
 
-  const handleSessionComplete = () => {
-    playSound()
-    if (currentSession === 'work') {
-      setSessionsCompleted(prev => prev + 1)
-      setCurrentSession(sessionsCompleted % 4 === 3 ? 'longBreak' : 'shortBreak')
-      setTimeLeft((sessionsCompleted % 4 === 3 ? longBreakDuration : shortBreakDuration) * 60)
-    } else {
-      setBreaksTaken(prev => prev + 1)
-      setCurrentSession('work')
-      setTimeLeft(workDuration * 60)
-    }
-    showNotification()
-    displayMotivationalMessage()
-  }
+  
 
   const displayMotivationalMessage = () => {
     const randomMessage = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)]

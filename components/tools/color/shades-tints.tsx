@@ -26,11 +26,6 @@ export default function ShadeTint() {
   const [variationCount, setVariationCount] = useState(5)
   const [history, setHistory] = useState<string[]>([])
   const [historyIndex, setHistoryIndex] = useState(-1)
-
-  useEffect(() => {
-    generateVariations()
-  }, [baseColor, variationCount])
-
   const generateVariations = () => {
     const newShades = []
     const newTints = []
@@ -53,6 +48,11 @@ export default function ShadeTint() {
     setHistory(prevHistory => [...prevHistory.slice(0, historyIndex + 1), baseColor])
     setHistoryIndex(prevIndex => prevIndex + 1)
   }
+  useEffect(() => {
+    generateVariations()
+  }, [baseColor, variationCount, generateVariations])
+
+  
 
   const createColorVariation = (hex: string): ColorVariation => {
     const rgb = hexToRgb(hex)

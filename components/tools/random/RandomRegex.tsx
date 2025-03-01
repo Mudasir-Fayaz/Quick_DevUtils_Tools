@@ -23,11 +23,12 @@ export default function RandomRegex() {
       }
       setResults(newResults)
     } catch (error) {
+      if(error){
       toast({
         title: "Invalid Regex",
         description: "Please enter a valid regular expression.",
         variant: "destructive",
-      })
+      })}
     }
   }
 

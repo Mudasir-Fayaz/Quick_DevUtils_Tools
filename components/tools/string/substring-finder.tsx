@@ -68,10 +68,7 @@ export default function SubstringFinder() {
   const [undoStack, setUndoStack] = useState<string[]>([])
   const [redoStack, setRedoStack] = useState<string[]>([])
 
-  useEffect(() => {
-    handleSearch();
-  }, [mainText, substring, searchOptions])
-
+ 
   const handleSearch = () => {
     setError(null);
     if (!mainText || !substring) {
@@ -86,6 +83,9 @@ export default function SubstringFinder() {
       setSearchResult(null);
     }
   }
+  useEffect(() => {
+    handleSearch();
+  }, [mainText, substring, searchOptions, handleSearch])
 
   const handleReplace = () => {
     if (!searchResult) return;

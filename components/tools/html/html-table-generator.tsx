@@ -52,14 +52,7 @@ type CellContent = string[][];
     });
   }, [rows, cols]);
 
-  useEffect(() => {
-    generateTable();
-  }, [
-    rows, cols, hasHeader, cellContent, alignment, padding, spacing,
-    borderStyle, borderWidth, headerBgColor, cellBgColor, headerTextColor,
-    cellTextColor, tableWidth, isResponsive, hasZebraStripes, hasHoverEffect,
-    caption, cssFramework
-  ]);
+  
 
   const generateTable = () => {
     let html = `<table class="table-auto ${isResponsive ? 'responsive' : ''} ${hasZebraStripes ? 'zebra-stripe' : ''} ${hasHoverEffect ? 'hover-effect' : ''}">\n`;
@@ -123,6 +116,15 @@ type CellContent = string[][];
 
     setGeneratedCss(css);
   };
+
+  useEffect(() => {
+    generateTable();
+  }, [
+    rows, cols, hasHeader, cellContent, alignment, padding, spacing,
+    borderStyle, borderWidth, headerBgColor, cellBgColor, headerTextColor,
+    cellTextColor, tableWidth, isResponsive, hasZebraStripes, hasHoverEffect,
+    caption, cssFramework, generateTable
+  ]);
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);

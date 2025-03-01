@@ -90,7 +90,7 @@ const ColorConverter: React.FC = () => {
 
   useEffect(() => {
     updateFormats(color);
-  }, [color]);
+  }, [color, updateFormats]);
 
   const handleCopy = (text: string, format: string) => {
     navigator.clipboard.writeText(text).then(() => {

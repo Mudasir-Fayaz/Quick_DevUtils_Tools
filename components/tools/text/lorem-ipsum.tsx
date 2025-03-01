@@ -80,15 +80,17 @@ export default function LoremIpsum() {
   });
   const [recentHistory, setRecentHistory] = useState<string[]>([]);
 
-  useEffect(() => {
-    generateText();
-  }, []);
+  
 
   const generateText = () => {
     const text = generateLoremIpsum(options);
     setGeneratedText(text);
     setRecentHistory(prev => [text, ...prev].slice(0, 5));
   };
+
+  useEffect(() => {
+    generateText();
+  }, [generateText]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedText);

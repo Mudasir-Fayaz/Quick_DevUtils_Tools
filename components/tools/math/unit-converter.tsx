@@ -90,7 +90,7 @@ export default function UnitConverter() {
       setToValue("")
     }
     setError(null)
-  }, [category, fromUnit, toUnit, fromValue])
+  }, [category, fromUnit, toUnit, fromValue, convert])
 
   const handleSwap = () => {
     setFromUnit(toUnit)

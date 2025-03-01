@@ -25,14 +25,6 @@ export default function UnixTimestampConverter() {
     return () => clearInterval(timer)
   }, [])
 
-  useEffect(() => {
-    convertUnixToDate()
-  }, [unixTimestamp, selectedTimezone])
-
-  useEffect(() => {
-    convertDateToUnix()
-  }, [dateTime, selectedTimezone])
-
   const convertUnixToDate = () => {
     if (unixTimestamp) {
       const date = new Date(parseInt(unixTimestamp) * 1000)
@@ -57,6 +49,10 @@ export default function UnixTimestampConverter() {
     }
   }
 
+  useEffect(() => {
+    convertUnixToDate()
+  }, [unixTimestamp, selectedTimezone, convertUnixToDate])
+
   const convertDateToUnix = () => {
     if (dateTime) {
       const date = new Date(dateTime)
@@ -65,6 +61,14 @@ export default function UnixTimestampConverter() {
     }
   }
 
+
+  useEffect(() => {
+    convertDateToUnix()
+  }, [dateTime, selectedTimezone, convertDateToUnix])
+
+  
+
+  
   const handleTabChange = (value: string) => {
     setActiveTab(value)
     setUnixTimestamp('')

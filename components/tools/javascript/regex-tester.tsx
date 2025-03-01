@@ -106,7 +106,7 @@ export default function RegexTester() {
       setMatches([]);
       setReplacedText('');
     }
-  }, [regex, text, flags, replacementText])
+  }, [regex, text, flags, replacementText, flagsString])
 
   // Highlight matches in the text
   const highlightMatches = () => {

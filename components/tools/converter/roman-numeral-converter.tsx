@@ -98,7 +98,7 @@ const RomanNumeralConverter: React.FC = () => {
 
   useEffect(() => {
     convert();
-  }, [input, mode]);
+  }, [input, mode, convert]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

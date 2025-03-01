@@ -54,9 +54,7 @@ export default function UrlEncodeDecode() {
   const [undoStack, setUndoStack] = useState<string[]>([])
   const [redoStack, setRedoStack] = useState<string[]>([])
 
-  useEffect(() => {
-    handleConversion()
-  }, [inputText, mode, options])
+  
 
   const handleConversion = () => {
     if (!inputText) {
@@ -71,6 +69,10 @@ export default function UrlEncodeDecode() {
     setUndoStack(prev => [inputText, ...prev])
     setRedoStack([])
   }
+
+  useEffect(() => {
+    handleConversion()
+  }, [inputText, mode, options, handleConversion])
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)

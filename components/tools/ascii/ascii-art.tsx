@@ -65,7 +65,7 @@ export default function AsciiArt() {
           setErrored(false)
         }
       } catch (error) {
-        if (isMounted) setErrored(true)
+        if (error) setErrored(true)
       } finally {
         if (isMounted) setProcessing(false)
       }

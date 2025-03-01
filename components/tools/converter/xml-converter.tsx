@@ -92,7 +92,7 @@ const XmlConverter: React.FC = () => {
         variant: "destructive",
       });
     }
-  }, [input, mode, isPretty, options]);
+  }, [input, mode, isPretty, options, convertJsonToXml]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

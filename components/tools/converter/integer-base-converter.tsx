@@ -93,7 +93,7 @@ const IntegerBaseConverter: React.FC = () => {
 
   useEffect(() => {
     convertBase();
-  }, [input, fromBase, toBase]);
+  }, [input, fromBase, toBase, convertBase]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

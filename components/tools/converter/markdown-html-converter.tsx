@@ -90,7 +90,7 @@ const MarkdownHtmlConverter: React.FC = () => {
     };
 
     convert();
-  }, [input, options, customCss]);
+  }, [input, options, customCss,convertMarkdownToHtml]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

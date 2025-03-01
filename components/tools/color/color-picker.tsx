@@ -110,7 +110,7 @@ export default function ColorPicker() {
     if (!recentColors.includes(color)) {
       setRecentColors(prev => [color, ...prev].slice(0, 10))
     }
-  }, [color])
+  }, [color,recentColors])
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColor(e.target.value)

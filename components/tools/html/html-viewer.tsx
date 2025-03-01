@@ -14,9 +14,7 @@ export default function HTMLViewer() {
   const [js, setJs] = useState('')
   const [preview, setPreview] = useState('')
 
-  useEffect(() => {
-    updatePreview()
-  }, [html, css, js])
+  
 
   const updatePreview = () => {
     const combinedCode = `
@@ -32,6 +30,10 @@ export default function HTMLViewer() {
     `
     setPreview(combinedCode)
   }
+
+  useEffect(() => {
+    updatePreview()
+  }, [html, css, js, updatePreview])
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]

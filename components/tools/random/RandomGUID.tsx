@@ -10,7 +10,7 @@ import { toast } from "@/hooks/use-toast"
 
 function generateGUID(uppercase: boolean, removeBraces: boolean): string {
   let guid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
-    var r = (Math.random() * 16) | 0,
+    const r = (Math.random() * 16) | 0,
       v = c == "x" ? r : (r & 0x3) | 0x8
     return v.toString(16)
   })

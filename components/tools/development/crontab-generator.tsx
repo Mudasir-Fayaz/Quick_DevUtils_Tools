@@ -52,6 +52,7 @@ export default function CrontabGenerator() {
 
   const calculateNextExecutions = (job: CronJob) => {
     // This is a simplified version. In a real app, you'd want to use a proper cron parser
+    console.log(job)
     const now = new Date()
     const executions = []
     for (let i = 0; i < 5; i++) {

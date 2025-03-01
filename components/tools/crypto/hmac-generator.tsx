@@ -103,7 +103,7 @@ const HmacGenerator: React.FC = () => {
     if (text && key) {
       generateHmac();
     }
-  }, [text, key, hashFunction, encoding]);
+  }, [text, key, hashFunction, encoding, generateHmac]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(hmacResult).then(() => {

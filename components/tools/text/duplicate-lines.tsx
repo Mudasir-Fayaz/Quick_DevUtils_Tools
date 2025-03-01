@@ -65,10 +65,7 @@ export default function DuplicateLines() {
   })
   const [isProcessing, setIsProcessing] = useState<boolean>(false)
 
-  useEffect(() => {
-    handleProcess()
-  }, [inputText, options])
-
+ 
   const handleProcess = () => {
     setIsProcessing(true)
     setTimeout(() => {
@@ -80,6 +77,11 @@ export default function DuplicateLines() {
       setIsProcessing(false)
     }, 500) // Simulating processing time for demo purposes
   }
+
+  useEffect(() => {
+    handleProcess()
+  }, [inputText, options, handleProcess])
+
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(processedText)

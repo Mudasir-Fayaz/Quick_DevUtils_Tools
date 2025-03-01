@@ -109,10 +109,7 @@ export default function JsonFormatter() {
   const [undoStack, setUndoStack] = useState<string[]>([])
   const [redoStack, setRedoStack] = useState<string[]>([])
 
-  useEffect(() => {
-    handleFormat()
-  }, [inputJSON, options])
-
+ 
   const handleFormat = () => {
     setError(null)
     if (!inputJSON) {
@@ -132,6 +129,9 @@ export default function JsonFormatter() {
       setOutputJSON("")
     }
   }
+  useEffect(() => {
+    handleFormat()
+  }, [inputJSON, options, handleFormat])
 
   const handleMinify = () => {
     setError(null)

@@ -71,7 +71,7 @@ export default function PrimeChecker() {
     }
     window.addEventListener("keydown", handleKeyPress)
     return () => window.removeEventListener("keydown", handleKeyPress)
-  }, [input])
+  }, [input, handleCheck])
 
   return (
     <div className="container mx-auto space-y-6">

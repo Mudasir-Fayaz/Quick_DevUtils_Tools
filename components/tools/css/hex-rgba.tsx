@@ -60,7 +60,7 @@ export default function HexRgba() {
       setError('Invalid HEX color')
       setRgbaOutput('')
     }
-  }, [hexInput, alpha])
+  }, [hexInput, alpha, recentColors])
 
   const handleHexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHexInput(e.target.value)

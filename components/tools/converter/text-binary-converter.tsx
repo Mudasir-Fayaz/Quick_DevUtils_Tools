@@ -63,7 +63,7 @@ const TextToBinaryConverter: React.FC = () => {
         variant: "destructive",
       });
     }
-  }, [input, delimiter]);
+  }, [input, delimiter, delimiterOptions]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

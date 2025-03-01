@@ -44,13 +44,6 @@ export default function HtmlAscii() {
   const [showPreview, setShowPreview] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (liveConversion) {
-      handleConvert()
-    }
-  }, [input, stripTags, caseSensitive, encoding])
-
   const handleConvert = () => {
     setError('')
     try {
@@ -67,6 +60,13 @@ export default function HtmlAscii() {
       setError('Conversion error occurred')
     }
   }
+  useEffect(() => {
+    if (liveConversion) {
+      handleConvert()
+    }
+  }, [input, stripTags, caseSensitive, encoding,liveConversion,handleConvert])
+
+ 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)

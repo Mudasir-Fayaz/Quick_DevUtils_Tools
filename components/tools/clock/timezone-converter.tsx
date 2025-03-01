@@ -29,7 +29,7 @@ export default function TimezoneConverter() {
     };
     
     fetchTimeZones();
-  }, [])
+  }, [timeZones])
 
   // Convert time when source time or zones change
   useEffect(() => {

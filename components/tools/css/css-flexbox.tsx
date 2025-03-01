@@ -70,10 +70,7 @@ export default function CSSFlexbox() {
   const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null)
   const [generatedCSS, setGeneratedCSS] = useState('')
 
-  useEffect(() => {
-    generateCSS()
-  }, [flexboxProps, items])
-
+  
   const generateCSS = () => {
     let css = `.flex-container {
   display: ${flexboxProps.display};
@@ -100,6 +97,11 @@ export default function CSSFlexbox() {
 
     setGeneratedCSS(css)
   }
+
+  useEffect(() => {
+    generateCSS()
+  }, [flexboxProps, items, generateCSS])
+
 
   const addItem = () => {
     setItems([...items, initialFlexItem])

@@ -53,9 +53,7 @@ export default function StringReverse() {
   })
   const [history, setHistory] = useState<string[]>([])
 
-  useEffect(() => {
-    reverseText()
-  }, [inputText, reverseType, options])
+ 
 
   const reverseText = () => {
     let result = inputText
@@ -78,6 +76,10 @@ export default function StringReverse() {
       setHistory(prev => [result, ...prev].slice(0, 5))
     }
   }
+
+  useEffect(() => {
+    reverseText()
+  }, [inputText, reverseType, options, reverseText])
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(outputText)

@@ -102,7 +102,7 @@ export default function GcdLcmCalculator() {
     }
     window.addEventListener("keydown", handleKeyPress)
     return () => window.removeEventListener("keydown", handleKeyPress)
-  }, [inputs])
+  }, [inputs, handleCalculate])
 
   return (
     <div className="container mx-auto space-y-6">

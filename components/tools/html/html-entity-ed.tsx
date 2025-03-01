@@ -55,9 +55,7 @@ export default function HtmlEntityEd() {
   const [showPreview, setShowPreview] = useState<boolean>(true) // whether to show preview
 
   // Effect to handle input and mode change
-  useEffect(() => {
-    handleConvert()
-  }, [input, mode])
+ 
 
   // Function to handle text conversion based on mode (encode/decode)
   const handleConvert = (): void => {
@@ -73,7 +71,9 @@ export default function HtmlEntityEd() {
       setError('Conversion error occurred')
     }
   }
-
+  useEffect(() => {
+    handleConvert()
+  }, [input, mode, handleConvert])
   // Function to handle input text changes
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setInput(e.target.value)

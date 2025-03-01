@@ -24,12 +24,7 @@ export default function JsonMinify() {
   const [activeTab, setActiveTab] = useState('input')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (jsonInput) {
-      minifyJSON()
-    }
-  }, [jsonInput, removeComments, removeWhitespace, shortenKeys, compressionLevel])
-
+ 
   const minifyJSON = () => {
     setError('')
     setIsMinifying(true)
@@ -67,6 +62,12 @@ export default function JsonMinify() {
       setIsMinifying(false)
     }
   }
+
+  useEffect(() => {
+    if (jsonInput) {
+      minifyJSON()
+    }
+  }, [jsonInput, removeComments, removeWhitespace, shortenKeys, compressionLevel, minifyJSON])
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]

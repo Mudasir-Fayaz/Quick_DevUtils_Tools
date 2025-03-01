@@ -31,22 +31,9 @@ export default function JsonDiff() {
   const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set())
   const [sortKeys, setSortKeys] = useState(false)
 
-  const compareJSON = useCallback(() => {
-    try {
-      const left = JSON.parse(leftJSON)
-      const right = JSON.parse(rightJSON)
-      const result = diffObjects(left, right, ignoreOptions)
-      setDiffResult(result)
-    } catch (error) {
-      console.error('Error parsing JSON:', error)
-      setDiffResult({ error: 'Invalid JSON' })
-    }
-  }, [leftJSON, rightJSON, ignoreOptions])
+ 
 
-  useEffect(() => {
-    compareJSON()
-  }, [compareJSON])
-
+  
   const diffObjects = (obj1: any, obj2: any, options: any, path: string = ''): any => {
     const result: any = {}
 
@@ -83,7 +70,23 @@ export default function JsonDiff() {
 
     return result
   }
+  const compareJSON = useCallback(() => {
+    try {
+      const left = JSON.parse(leftJSON)
+      const right = JSON.parse(rightJSON)
+      const result = diffObjects(left, right, ignoreOptions)
+      setDiffResult(result)
+    } catch (error) {
+      console.error('Error parsing JSON:', error)
+      setDiffResult({ error: 'Invalid JSON' })
+    }
+  }, [leftJSON, rightJSON, ignoreOptions, diffObjects])
 
+  useEffect(() => {
+    compareJSON()
+  }, [compareJSON])
+
+  
   const toggleNode = (path: string) => {
     setExpandedNodes(prev => {
       const newSet = new Set(prev)

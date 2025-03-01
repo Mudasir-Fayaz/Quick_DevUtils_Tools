@@ -68,7 +68,7 @@ export default function FactorialCalculator() {
     }
     window.addEventListener("keydown", handleKeyPress)
     return () => window.removeEventListener("keydown", handleKeyPress)
-  }, [input])
+  }, [input, handleCalculate])
 
   return (
     <div className="container mx-auto space-y-6">

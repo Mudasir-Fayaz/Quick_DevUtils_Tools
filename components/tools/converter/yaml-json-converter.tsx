@@ -64,7 +64,7 @@ const YamlJsonConverter: React.FC = () => {
         variant: "destructive",
       });
     }
-  }, [input, mode, isPretty]);
+  }, [input, mode, isPretty, convertYamlToJson]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

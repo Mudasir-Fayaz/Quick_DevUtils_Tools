@@ -89,9 +89,7 @@ export default function JsonValidator() {
   const [undoStack, setUndoStack] = useState<string[]>([])
   const [redoStack, setRedoStack] = useState<string[]>([])
 
-  useEffect(() => {
-    handleValidate()
-  }, [inputJSON, options])
+  
 
   const handleValidate = () => {
     if (!inputJSON) {
@@ -113,7 +111,9 @@ export default function JsonValidator() {
     setUndoStack(prev => [inputJSON, ...prev])
     setRedoStack([])
   }
-
+  useEffect(() => {
+    handleValidate()
+  }, [inputJSON, options, handleValidate])
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
   }

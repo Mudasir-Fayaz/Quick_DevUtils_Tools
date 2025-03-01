@@ -82,9 +82,7 @@ export default function JsonCsv() {
   const [redoStack, setRedoStack] = useState<string[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    handleConvert()
-  }, [inputJSON, options])
+ 
 
   const handleConvert = () => {
     setError(null)
@@ -105,6 +103,10 @@ export default function JsonCsv() {
       setOutputCSV("")
     }
   }
+
+  useEffect(() => {
+    handleConvert()
+  }, [inputJSON, options, handleConvert])
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)

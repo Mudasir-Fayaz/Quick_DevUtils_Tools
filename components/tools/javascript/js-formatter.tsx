@@ -59,9 +59,7 @@ export default function JSFormatter() {
   const [showPreview, setShowPreview] = useState(true)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    handleFormat()
-  }, [input, options])
+  
 
 
   const handleFormat = () => {
@@ -75,6 +73,9 @@ export default function JSFormatter() {
     }
   }
 
+  useEffect(() => {
+    handleFormat()
+  }, [input, options, handleFormat])
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)
   }

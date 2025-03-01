@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -55,10 +54,7 @@ export default function StrCaseConvert() {
   const [undoStack, setUndoStack] = useState<string[]>([])
   const [redoStack, setRedoStack] = useState<string[]>([])
 
-  useEffect(() => {
-    convertText()
-  }, [inputText, conversionType, options])
-
+ 
   const convertText = () => {
     let result = applyOptions(inputText, options)
     result = caseConversions[conversionType](result)
@@ -69,6 +65,9 @@ export default function StrCaseConvert() {
     setUndoStack(prev => [inputText, ...prev])
     setRedoStack([])
   }
+  useEffect(() => {
+    convertText()
+  }, [inputText, conversionType, options, convertText])
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(outputText)

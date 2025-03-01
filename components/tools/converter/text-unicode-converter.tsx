@@ -101,7 +101,7 @@ const TextToUnicodeConverter: React.FC = () => {
         variant: "destructive",
       });
     }
-  }, [input, mode]);
+  }, [input, mode, getUnicodeInfo]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

@@ -78,11 +78,7 @@ export default function CSSFormatter() {
   const [showPreview, setShowPreview] = useState(true)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    handleFormat()
-  }, [input, options])
-
-
+  
   const handleFormat = () => {
     setError('')
     try {
@@ -93,6 +89,10 @@ export default function CSSFormatter() {
       setError('Formatting error occurred')
     }
   }
+  useEffect(() => {
+    handleFormat()
+  }, [input, options, handleFormat])
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)

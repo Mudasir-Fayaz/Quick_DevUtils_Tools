@@ -64,10 +64,7 @@ export default function HtmlMinifier() {
   })
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    handleMinify()
-  }, [input, options])
-
+  
   const handleMinify = () => {
     setError('')
     try {
@@ -78,6 +75,9 @@ export default function HtmlMinifier() {
       setError('Minification error occurred')
     }
   }
+  useEffect(() => {
+    handleMinify()
+  }, [input, options, handleMinify])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)

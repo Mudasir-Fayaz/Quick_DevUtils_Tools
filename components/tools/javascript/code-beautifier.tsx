@@ -69,7 +69,7 @@ export default function CodeBeautifier() {
       setError('Error formatting code')
       setOutputCode('')
     }
-  }, [inputCode, language, indentSize, isMinified])
+  }, [inputCode, language, indentSize, isMinified, historyIndex, setHistory])
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]

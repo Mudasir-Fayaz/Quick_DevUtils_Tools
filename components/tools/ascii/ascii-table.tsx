@@ -111,7 +111,6 @@ export default function AsciiTable() {
   ])
   const [tableStyle, setTableStyle] = useState<TableStyle>("simple")
   const [asciiTable, setAsciiTable] = useState<string>("")
-  const [columnWidths, setColumnWidths] = useState<number[]>([])
   const { toast } = useToast()
 
   // Calculate column widths and generate ASCII table
@@ -123,7 +122,6 @@ export default function AsciiTable() {
         3, // Minimum width
       )
     })
-    setColumnWidths(widths)
 
     // Generate the ASCII table
     const style = tableStyles[tableStyle]

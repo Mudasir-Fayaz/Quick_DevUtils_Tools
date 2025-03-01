@@ -63,6 +63,7 @@ export default function RandomPortGenerator() {
         text: `Generated ports: ${ports.join(", ")}`,
       })
     } catch (error) {
+      console.log(error)
     }
   }
 

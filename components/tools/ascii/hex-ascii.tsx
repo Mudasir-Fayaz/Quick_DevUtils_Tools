@@ -36,13 +36,7 @@ export default function HexAscii() {
   const [liveConversion, setLiveConversion] = useState(true)
   const [encoding, setEncoding] = useState('UTF-8')
   const fileInputRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (liveConversion) {
-      handleConvert()
-    }
-  }, [input, mode, grouping, encoding])
-
+  
   const handleConvert = () => {
     setError('')
     if (mode === 'hexToAscii') {
@@ -62,6 +56,14 @@ export default function HexAscii() {
       setOutput(asciiToHex(input))
     }
   }
+
+  useEffect(() => {
+    if (liveConversion) {
+      handleConvert()
+    }
+  }, [input, mode, grouping, encoding, handleConvert, liveConversion])
+
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)

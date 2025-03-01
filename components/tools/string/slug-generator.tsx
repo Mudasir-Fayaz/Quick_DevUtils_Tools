@@ -62,9 +62,7 @@ export default function SlugGenerator() {
   const [undoStack, setUndoStack] = useState<string[]>([])
   const [redoStack, setRedoStack] = useState<string[]>([])
 
-  useEffect(() => {
-    generateSlugs()
-  }, [inputText, options])
+  
 
   const generateSlugs = () => {
     const newSlugs = inputText.split('\n').map(text => generateSlug(text, options))
@@ -73,6 +71,10 @@ export default function SlugGenerator() {
     setUndoStack(prev => [inputText, ...prev])
     setRedoStack([])
   }
+
+  useEffect(() => {
+    generateSlugs()
+  }, [inputText, options, generateSlugs])
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(slugs.join('\n'))

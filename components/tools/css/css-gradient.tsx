@@ -29,10 +29,7 @@ const CSSGradient = () => {
   const [gradientHistory, setGradientHistory] = useState<string[]>([])
   const previewRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    updateGradient()
-  }, [gradientType, colorStops, angle, shape, size, centerX, centerY, repeating])
-
+  
   const updateGradient = () => {
     let gradientString = ''
     if (repeating) {
@@ -56,6 +53,9 @@ const CSSGradient = () => {
       previewRef.current.style.background = gradientString
     }
   }
+  useEffect(() => {
+    updateGradient()
+  }, [gradientType, colorStops, angle, shape, size, centerX, centerY, repeating, updateGradient])
 
   const addColorStop = () => {
     setColorStops([...colorStops, { color: '#000000', position: 50 }])

@@ -67,7 +67,7 @@ const Base64Converter: React.FC = () => {
 
   useEffect(() => {
     convert();
-  }, [input, mode, encoding]);
+  }, [input, mode, encoding, convert]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

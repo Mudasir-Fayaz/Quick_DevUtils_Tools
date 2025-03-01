@@ -81,15 +81,17 @@ export default function LineSorter() {
     randomize: false,
   })
 
-  useEffect(() => {
-    handleSort()
-  }, [inputText, options])
+  
 
   const handleSort = () => {
     const lines = inputText.split('\n')
     const sortedLines = sortLines(lines, options)
     setSortedText(sortedLines.join('\n'))
   }
+
+  useEffect(() => {
+    handleSort()
+  }, [inputText, options, handleSort])
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(sortedText)

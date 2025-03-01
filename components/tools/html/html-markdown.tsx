@@ -61,9 +61,7 @@ export default function HtmlMarkdown() {
     convertDivs: true,
   })
 
-  useEffect(() => {
-    handleConvert()
-  }, [input, options])
+  
 
   const handleConvert = () => {
     setError('')
@@ -76,6 +74,9 @@ export default function HtmlMarkdown() {
     }
   }
 
+  useEffect(() => {
+    handleConvert()
+  }, [input, options, handleConvert])
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)
   }

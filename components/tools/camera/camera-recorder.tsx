@@ -27,9 +27,10 @@ export default function CameraRecorder() {
 
   useEffect(() => {
     startCamera()
+    const currentVideo = videoRef.current
     return () => {
-      if (videoRef.current && videoRef.current.srcObject) {
-        const tracks = (videoRef.current.srcObject as MediaStream).getTracks()
+      if (currentVideo && currentVideo.srcObject) {
+        const tracks = (currentVideo.srcObject as MediaStream).getTracks()
         tracks.forEach(track => track.stop())
       }
     }

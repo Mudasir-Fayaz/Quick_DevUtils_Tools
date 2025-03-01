@@ -70,10 +70,7 @@ export default function HtmlFormatter() {
   })
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    handleFormat()
-  }, [input, options])
-
+  
   const handleFormat = () => {
     setError('')
     try {
@@ -84,6 +81,11 @@ export default function HtmlFormatter() {
       setError('Formatting error occurred')
     }
   }
+
+  useEffect(() => {
+    handleFormat()
+  }, [input, options, handleFormat])
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value)

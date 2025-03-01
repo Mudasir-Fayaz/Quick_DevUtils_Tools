@@ -17,13 +17,6 @@ export default function TimeDifference() {
   const [difference, setDifference] = useState<{ years: number; months: number; days: number; hours: number; minutes: number } | null>(null)
 
   const timezones = Intl.supportedValuesOf('timeZone')
-
-  useEffect(() => {
-    if (startDate && endDate) {
-      calculateDifference()
-    }
-  }, [startDate, endDate, startTimezone, endTimezone])
-
   const calculateDifference = () => {
     const start = new Date(startDate)
     const end = new Date(endDate)
@@ -61,6 +54,13 @@ export default function TimeDifference() {
 
     setDifference({ years, months, days, hours, minutes })
   }
+  useEffect(() => {
+    if (startDate && endDate) {
+      calculateDifference()
+    }
+  }, [startDate, endDate, startTimezone, endTimezone, calculateDifference])
+
+ 
 
   return (
     <Card className="w-full mx-auto">

@@ -109,7 +109,7 @@ const ListConverter: React.FC = () => {
         variant: "destructive",
       });
     }
-  }, [input, inputFormat, outputFormat, trim, removeDuplicates, sort, customDelimiter]);
+  }, [input, inputFormat, outputFormat, trim, removeDuplicates, sort, customDelimiter, formatOutput, parseInput]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result).then(() => {

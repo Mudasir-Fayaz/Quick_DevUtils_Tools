@@ -74,7 +74,7 @@ const PaletteGenerator = () => {
 
   useEffect(() => {
     generatePalette(baseColor)
-  }, [baseColor, paletteSize])
+  }, [baseColor, paletteSize, generatePalette])
 
   return (
     <div className="container mx-auto">
